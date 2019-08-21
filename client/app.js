@@ -7,8 +7,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        Hello World.
+      <div className="container">
+        <a>$95 per night</a>
+        <br></br>
+        <a>*****</a>
+        <hr></hr>
+        <a>Dates</a>
+        {/* Check-in Check-out */}
       </div>
     )
   }

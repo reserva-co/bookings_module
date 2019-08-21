@@ -1,0 +1,17 @@
+body {
+  font-family: Helvetica;
+}
+
+hr { 
+  height: 1px;
+  color: lightgrey;
+  background-color: lightgrey;
+  border: none;
+
+}
+.container {
+  width: 325px;
+  height: 413px;
+  border: 1px solid lightgrey;
+  padding: 26px;
+}
