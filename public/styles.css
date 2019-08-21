@@ -1,5 +1,7 @@
 body {
-  font-family: Helvetica;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  color: #484848;
 }
 
 hr { 
@@ -7,11 +9,40 @@ hr {
   color: lightgrey;
   background-color: lightgrey;
   border: none;
-
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
-.container {
-  width: 325px;
-  height: 413px;
+
+#module-container {
+  margin-left: 45px;
+  width: 376px;
+  z-index: 3;
+  margin-top: 32px;
+}
+
+#module-container-2 {
+  padding: 24px;
+  padding-top: 16px;
   border: 1px solid lightgrey;
-  padding: 26px;
+}
+
+.subtitle {
+  font-weight: 500;
+}
+
+#dates-container {
+  border: 1px solid lightgrey;
+  box-sizing: border-box;
+  color: #484848;
+  margin-bottom: 16px;
+}
+
+.checkin-text {
+  font-weight: normal;
+  font-size: 17px;
+  color: grey;
+  display: inline-block;
+  width: 40%;
+  vertical-align: middle;
+  padding: 8px;
 }
