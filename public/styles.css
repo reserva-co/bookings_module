@@ -31,7 +31,6 @@ hr {
 }
 
 #dates-container {
-  border: 1px solid lightgrey;
   box-sizing: border-box;
   color: #484848;
   margin-bottom: 16px;
@@ -59,6 +58,15 @@ hr {
   margin-bottom: -1px;
 }
 
+.day-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  margin-bottom: 2px;
+  margin-top: 5px;
+}
+
 .booked {
   color: lightgrey;
 }
@@ -66,7 +74,6 @@ hr {
 .hoverable:hover {
   background-color:rgba(0, 0, 0, 0.2)
 }
-
 
 .empty-box {
   width: 42px;
@@ -87,4 +94,27 @@ hr {
   align-content: center;
   justify-content: center;
   width: 335px;
+}
+
+#switch-container {
+  display:flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#big-container {
+  border: 1px solid lightgrey;
+  text-align: center;
+  width: 335px;
+}
+
+#month-name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#buttons-and-month {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
 }
