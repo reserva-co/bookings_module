@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckIn from './check.js';
+import Calendar from './calendar.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,16 +10,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="module-container">
-        <div id="module-container-2">
-          <a>${this.state.price} per night</a>
-          <br></br>
-          &#9733;&#9733;&#9733;&#9733;
-          <div className="linebreak">
-            <hr></hr>
+      <div>
+        <div id="module-container">
+          <div id="module-container-2">
+            <a>${this.state.price} per night</a>
+            <br></br>
+            &#9733;&#9733;&#9733;&#9733;
+            <div className="linebreak">
+              <hr></hr>
+            </div>
+            <CheckIn />
           </div>
-          <CheckIn />
         </div>
+        <br></br>
+        <br></br>
+        <Calendar />
       </div>
     )
   }

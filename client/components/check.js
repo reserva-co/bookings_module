@@ -6,7 +6,7 @@ var CheckIn = (props) => {
       <span className="subtitle">Dates</span>
       <div id="dates-container">
         <span className="checkin-text">Check-In</span>
-        <span>&#8594;</span>
+        <span> &#8594;</span>
         <span className="checkin-text">Check-out </span>
       </div>
       <span className="subtitle">Guests</span>
