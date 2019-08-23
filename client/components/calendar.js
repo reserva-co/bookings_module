@@ -21,7 +21,7 @@ class Calendar extends React.Component {
   }
 
   onNext() {
-    let { currentMonth } = this.state;
+    const { currentMonth } = this.state;
     if (currentMonth === 11) {
       this.date.currentMonth = 0;
       this.date.currentYear += 1;
@@ -32,7 +32,7 @@ class Calendar extends React.Component {
         numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate(),
       });
     } else {
-      currentMonth += 1;
+      this.date.currentMonth += 1;
       this.setState({
         currentMonth: this.date.currentMonth,
         startDay: new Date(`${this.date.currentYear}-${this.date.currentMonth + 1}-01`).getDay(),
@@ -80,28 +80,28 @@ class Calendar extends React.Component {
     if (currentYear === new Date().getFullYear()) {
       if (currentMonth > new Date().getMonth()) {
         for (let i = 0; i < numberOfDays; i += 1) {
-          output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>);
+          output.push(<div key={`${i + 1}`} className="date-box hoverable">{i + 1}</div>);
         }
       } else if (currentMonth < new Date().getMonth()) {
         for (let i = 0; i < numberOfDays; i += 1) {
-          output.push(<div key={`${i}`} className="date-box booked">{i}</div>);
+          output.push(<div key={`${i + 1}`} className="date-box booked">{i + 1}</div>);
         }
       } else {
         let i = 0;
         for (; i < currentDate; i += 1) {
-          output.push(<div key={`${i}`} className="date-box booked">{i}</div>);
+          output.push(<div key={`${i + 1}`} className="date-box booked">{i + 1}</div>);
         }
         for (; i < numberOfDays; i += 1) {
-          output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>);
+          output.push(<div key={`${i + 1}`} className="date-box hoverable">{i + 1}</div>);
         }
       }
     } else if (currentYear > new Date().getFullYear()) {
       for (let i = 0; i < numberOfDays; i += 1) {
-        output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>);
+        output.push(<div key={`${i + 1}`} className="date-box hoverable">{i + 1}</div>);
       }
     } else {
       for (let i = 0; i < numberOfDays; i += 1) {
-        output.push(<div key={`${i}`} className="date-box booked">{i}</div>);
+        output.push(<div key={`${i + 1}`} className="date-box booked">{i + 1}</div>);
       }
     }
 
