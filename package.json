@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "Bookings_module",
   "version": "",
   "description": "",
   "author": "",
@@ -12,19 +12,14 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "./node_modules/jest-enzyme/lib/index.js"
-    ],
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils",
-      "<rootDir>/node_modules/fbjs"
+      "./client/setupTests.js"
     ]
   },
   "dependencies": {
     "axios": "^0.19.0",
     "babel-eslint": "^10.0.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "express": "^4.17.1",
     "mongoose": "^5.6.10",
     "react": "^16.9.0",
@@ -39,8 +34,6 @@
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.2.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",

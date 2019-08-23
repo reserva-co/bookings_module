@@ -1,38 +1,15 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-undef */
 import React from 'react';
-import { expect } from 'chai';
-import { render } from 'enzyme';
+import { shallow } from 'enzyme';
 
-import App from './client/components/app.js';
 
-describe('<App />', () => {
-  it('renders three `.foo-bar`s', () => {
-    const wrapper = render(<App />);
-    expect(wrapper.find('.foo-bar')).to.have.lengthOf(3);
-  });
+import App from '../client/components/app';
 
-  it('renders the title', () => {
-    const wrapper = render(<Foo title="unique" />);
-    expect(wrapper.text()).to.contain('unique');
+describe('MyComponent', () => {
+  it('should render correctly in "debug" mode', () => {
+    const component = shallow(<App debug />);
+
+    expect(component).toMatchSnapshot();
   });
 });
-
-// import React from 'react';
-// import { shallow } from 'enzyme';
-
-// // Components
-// import WelcomeMessage from './WelcomeMessage';
-
-// function setup() {
-//   const props = {
-//     imgPath: 'some/image/path/to/a/mock/image',
-//   };
-//   const wrapper = shallow(<WelcomeMessage />);
-//   return { wrapper, props };
-// }
-
-// describe('WelcomeMessage Test Suite', () => {
-//   it('Should have an image', () => {
-//     const { wrapper } = setup();
-//     expect(wrapper.find('img').exists()).toBe(true);
-//   });
-// });
