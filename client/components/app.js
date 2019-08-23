@@ -1,32 +1,40 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import React from 'react';
-import CheckIn from './check.js';
-import Calendar from './calendar.js';
+import CheckIn from './check';
+import Calendar from './calendar';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {price: 95, rating: 4};
+    this.state = { price: 95 };
   }
 
   render() {
+    const { price } = this.state;
     return (
       <div>
         <div id="module-container">
           <div id="module-container-2">
-            <a>${this.state.price} per night</a>
-            <br></br>
+            <span>
+$
+              { price }
+              {' '}
+per night
+            </span>
+            <br />
             &#9733;&#9733;&#9733;&#9733;
             <div className="linebreak">
-              <hr></hr>
+              <hr />
             </div>
             <CheckIn />
           </div>
         </div>
-        <br></br>
-        <br></br>
+        <br />
+        <br />
         <Calendar />
       </div>
-    )
+    );
   }
 }
 

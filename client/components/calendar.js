@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import React from 'react';
 
 class Calendar extends React.Component {
@@ -5,95 +7,105 @@ class Calendar extends React.Component {
     super(props);
     this.date = {
       currentMonth: new Date().getMonth(),
-      currentYear: new Date().getFullYear()
-    }
+      currentYear: new Date().getFullYear(),
+    };
     this.state = {
       currentDate: new Date().getDate(),
       currentMonth: new Date().getMonth(),
       currentYear: new Date().getFullYear(),
-      startDay: new Date(this.date.currentYear + "-" + (this.date.currentMonth+1) + "-01").getDay(),
+      startDay: new Date(`${this.date.currentYear}-${this.date.currentMonth + 1}-01`).getDay(),
       numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate(),
-    }
+    };
     this.onNext = this.onNext.bind(this);
     this.onPrevious = this.onPrevious.bind(this);
-  };
+  }
 
   onNext() {
-    if (this.state.currentMonth === 11) {
+    let { currentMonth } = this.state;
+    if (currentMonth === 11) {
       this.date.currentMonth = 0;
-      this.date.currentYear++;
-      this.setState({currentMonth: this.date.currentMonth,
+      this.date.currentYear += 1;
+      this.setState({
+        currentMonth: this.date.currentMonth,
         currentYear: this.date.currentYear,
-        startDay: new Date(this.date.currentYear + "-" + (this.date.currentMonth + 1) + "-01").getDay(),
-        numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate()
+        startDay: new Date(`${this.date.currentYear}-${this.date.currentMonth + 1}-01`).getDay(),
+        numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate(),
       });
     } else {
-      this.date.currentMonth++;
-      this.setState({currentMonth: this.date.currentMonth,
-        startDay: new Date(this.date.currentYear + "-" + (this.date.currentMonth + 1) + "-01").getDay(),
-        numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate()
+      currentMonth += 1;
+      this.setState({
+        currentMonth: this.date.currentMonth,
+        startDay: new Date(`${this.date.currentYear}-${this.date.currentMonth + 1}-01`).getDay(),
+        numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate(),
       });
     }
   }
 
   onPrevious() {
-    if (this.state.currentMonth === 0) {
+    const { currentMonth } = this.state;
+    if (currentMonth === 0) {
       this.date.currentMonth = 11;
-      this.date.currentYear--;
-      this.setState({ currentMonth: this.date.currentMonth,
+      this.date.currentYear -= 1;
+      this.setState({
+        currentMonth: this.date.currentMonth,
         currentYear: this.date.currentYear,
-        startDay: new Date(this.date.currentYear + "-" + (this.date.currentMonth + 1) + "-01").getDay(),
-        numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate()
+        startDay: new Date(`${this.date.currentYear}-${this.date.currentMonth + 1}-01`).getDay(),
+        numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate(),
       });
     } else {
-      this.date.currentMonth--;
-      this.setState({ currentMonth: this.date.currentMonth,
-        startDay: new Date(this.date.currentYear + "-" + (this.date.currentMonth + 1) + "-01").getDay(),
-        numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate()
+      this.date.currentMonth -= 1;
+      this.setState({
+        currentMonth: this.date.currentMonth,
+        startDay: new Date(`${this.date.currentYear}-${this.date.currentMonth + 1}-01`).getDay(),
+        numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate(),
       });
     }
   }
 
   render() {
-    var daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-    var output = [];
-    var month;
-    
-    for (var i = 0; i < 7; i++) {
-      output.push(<div key={`d${i}`} className="day-box">{daysOfWeek[i]}</div>)
+    const {
+      startDay, currentYear, currentMonth, numberOfDays, currentDate,
+    } = this.state;
+    const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const output = [];
+    let month;
+
+    for (let i = 0; i < 7; i += 1) {
+      output.push(<div key={`d${i}`} className="day-box">{daysOfWeek[i]}</div>);
     }
-    for (var i = 0; i < this.state.startDay; i++) {
-      output.push(<div key={`e${i}`} className="empty-box"></div>)
+    for (let i = 0; i < startDay; i += 1) {
+      output.push(<div key={`e${i}`} className="empty-box" />);
     }
-    
-    if (this.state.currentYear === new Date().getFullYear()) {
-      if (this.state.currentMonth > new Date().getMonth()) {
-        for (var i = 0; i < this.state.numberOfDays; i++) {
-          output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>)
+
+    if (currentYear === new Date().getFullYear()) {
+      if (currentMonth > new Date().getMonth()) {
+        for (let i = 0; i < numberOfDays; i += 1) {
+          output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>);
         }
-      } else if (this.state.currentMonth < new Date().getMonth()) {
-        for (var i = 0; i < this.state.numberOfDays; i++) {
-          output.push(<div key={`${i}`} className="date-box booked">{i}</div>)
+      } else if (currentMonth < new Date().getMonth()) {
+        for (let i = 0; i < numberOfDays; i += 1) {
+          output.push(<div key={`${i}`} className="date-box booked">{i}</div>);
         }
       } else {
-        for (var i = 0; i < this.state.currentDate; i++) {
-          output.push(<div key={`${i}`} className="date-box booked">{i}</div>)
+        let i = 0;
+        for (; i < currentDate; i += 1) {
+          output.push(<div key={`${i}`} className="date-box booked">{i}</div>);
         }
-        for (; i < this.state.numberOfDays; i++) {
-          output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>)
+        for (; i < numberOfDays; i += 1) {
+          output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>);
         }
       }
-    } else if (this.state.currentYear > new Date().getFullYear()) {
-      for (var i = 0; i < this.state.numberOfDays; i++) {
-        output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>)
+    } else if (currentYear > new Date().getFullYear()) {
+      for (let i = 0; i < numberOfDays; i += 1) {
+        output.push(<div key={`${i}`} className="date-box hoverable">{i}</div>);
       }
     } else {
-      for (var i = 0; i < this.state.numberOfDays; i++) {
-        output.push(<div key={`${i}`} className="date-box booked">{i}</div>)
+      for (let i = 0; i < numberOfDays; i += 1) {
+        output.push(<div key={`${i}`} className="date-box booked">{i}</div>);
       }
     }
 
-    switch(this.state.currentMonth) {
+    switch (currentMonth) {
       case (0): month = 'January'; break;
       case (1): month = 'Febuary'; break;
       case (2): month = 'March'; break;
@@ -106,14 +118,19 @@ class Calendar extends React.Component {
       case (9): month = 'October'; break;
       case (10): month = 'November'; break;
       case (11): month = 'December'; break;
+      default: month = 'Random';
     }
 
     return (
       <div id="big-container">
         <div id="buttons-and-month">
-          <span><button onClick={this.onPrevious}>back</button></span>
-          <span id="month-name">{month} {this.state.currentYear}</span>
-          <span><button onClick={this.onNext}>next</button></span>
+          <span><button type="button" onClick={this.onPrevious}>back</button></span>
+          <span id="month-name">
+            {month}
+            {' '}
+            {currentYear}
+          </span>
+          <span><button type="button" onClick={this.onNext}>next</button></span>
         </div>
         <div id="dates-container">
           <div id="calendar-container">
@@ -121,7 +138,7 @@ class Calendar extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
