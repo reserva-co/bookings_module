@@ -6,16 +6,15 @@ mongoose.connect('mongodb://localhost/reservadata', { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log('yatta');
 });
 
 const reservationSchema = new mongoose.Schema({
   listingId: String,
   year: Number,
-  August: [Number],
-  September: [Number],
-  October: [Number],
-  November: [Number],
+  month1: [Number],
+  month2: [Number],
+  month3: [Number],
+  month4: [Number],
 });
 
 const Reservations = mongoose.model('Reservation', reservationSchema);
@@ -32,13 +31,23 @@ const generateReservedDates = (num, maxDays) => {
   return array;
 };
 
+const getFirstReservation = () => {
+  Reservations.findOne({});
+};
+
 for (let i = 0; i < 100; i += 1) {
   Reservations.create({
     listingId: JSON.stringify(i).padStart(2, 0),
     year: 2019,
-    August: generateReservedDates(NumberOfDaysReserved(31), 31),
-    September: generateReservedDates(NumberOfDaysReserved(30), 30),
-    October: generateReservedDates(NumberOfDaysReserved(31), 31),
-    November: generateReservedDates(NumberOfDaysReserved(29), 29),
+    month1: generateReservedDates(NumberOfDaysReserved(31), 31),
+    month2: generateReservedDates(NumberOfDaysReserved(30), 30),
+    month3: generateReservedDates(NumberOfDaysReserved(31), 31),
+    month4: generateReservedDates(NumberOfDaysReserved(29), 29),
   });
 }
+
+
+module.exports = {
+  Reservations,
+  getFirstReservation,
+};

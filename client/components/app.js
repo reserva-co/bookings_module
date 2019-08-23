@@ -17,13 +17,13 @@ class App extends React.Component {
         <div id="module-container">
           <div id="module-container-2">
             <span>
-$
+  $
               { price }
               {' '}
-per night
+  per night
             </span>
             <br />
-            &#9733;&#9733;&#9733;&#9733;
+              &#9733;&#9733;&#9733;&#9733;
             <div className="linebreak">
               <hr />
             </div>
