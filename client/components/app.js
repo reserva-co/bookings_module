@@ -1,14 +1,21 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import CheckIn from './check';
 import Calendar from './calendar';
+import { fetchPrice } from '../actions/pricesAction';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { price: 95 };
   }
+
+  // componentDidMount() {
+  //   this.props.fetchPosts();
+  // }
 
   render() {
     const { price } = this.state;
@@ -38,4 +45,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(null, { fetchPrice })(App);

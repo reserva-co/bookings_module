@@ -28,13 +28,15 @@ class Calendar extends React.Component {
 
   componentDidMount() {
     axios.get('/api/reservations').then((res) => {
+      console.log(JSON.stringify(res.data));
       this.setState({
         month1: res.data.month1,
         month2: res.data.month2,
         month3: res.data.month3,
         month4: res.data.month4,
       });
-    });
+    })
+      .catch(() => {});
   }
 
   onNext() {

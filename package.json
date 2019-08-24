@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "webpack -d --watch",
-    "test": "jest"
+    "test": "jest",
+    "seed": "node ./database/databse.js"
   },
   "jest": {
     "setupFilesAfterEnv": [
