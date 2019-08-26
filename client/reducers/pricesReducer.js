@@ -1,5 +1,9 @@
 const initialState = {
   price: null,
+  rating: null,
+  numberOfReviews: null,
+  cleaningFee: null,
+  serviceFee: null,
 };
 
 export default function (state = initialState, action) {
@@ -9,7 +13,11 @@ export default function (state = initialState, action) {
       console.log(action.payload);
       return {
         ...state,
-        price: action.payload,
+        price: action.payload.price,
+        rating: action.payload.rating,
+        numberOfReviews: action.payload.numberOfReviews,
+        serviceFee: action.payload.serviceFee,
+        cleaningFee: action.payload.cleaningFee,
       };
     default:
       return state;

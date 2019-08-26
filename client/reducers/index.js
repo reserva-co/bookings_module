@@ -4,7 +4,7 @@ import pricesReducer from './pricesReducer';
 
 export default combineReducers({
   calendar: calendarReducer,
-  price: pricesReducer,
+  costs: pricesReducer,
 });
 
 // these are the states (state.calendar, state.price) that is given to everything,

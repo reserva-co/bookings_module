@@ -13,8 +13,7 @@ app.get('/api/reservations', (req, res) => {
 });
 
 app.get('/api/reservations/prices', (req, res) => {
-  console.log('THIS GET IS WORKING');
-  res.send('93');
+  db.Reservations.findOne({}).then((data) => res.send(data));
 });
 
 app.listen(port, () => console.log('Listening on port 3000'));
