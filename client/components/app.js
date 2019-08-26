@@ -14,19 +14,29 @@ class App extends React.Component {
   }
 
   render() {
-    const { price } = this.props;
+    const { price, rating } = this.props;
+    const percentage = `${((rating / 5).toFixed(2)) * 100}%`;
     return (
       <div>
         <div id="module-container">
           <div id="module-container-2">
             <span>
-  $
-              { price }
+              <span className="price-name">
+                <span>$</span>
+                {price}
+              </span>
               {' '}
-  per night
+              <span className="small-text">per night</span>
             </span>
             <br />
-              &#9733;&#9733;&#9733;&#9733;
+            <div className="star-ratings-css">
+              <div className="star-ratings-css-top" style={{ width: percentage }}>
+                ★★★★★
+              </div>
+              <div className="star-ratings-css-bottom">
+                ★★★★★
+              </div>
+            </div>
             <div className="linebreak">
               <hr />
             </div>
