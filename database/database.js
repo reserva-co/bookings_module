@@ -11,6 +11,7 @@ db.once('open', () => {
 const reservationSchema = new mongoose.Schema({
   listingId: String,
   rating: Number,
+  numberOfReviews: Number,
   price: Number,
   cleaningFee: Number,
   serviceFee: Number,
@@ -23,6 +24,10 @@ const reservationSchema = new mongoose.Schema({
 });
 
 const Reservations = mongoose.model('Reservation', reservationSchema);
+
+Reservations.deleteMany({}, (err) => {
+  if (err) console.log(err);
+});
 
 const generateNumberOfDaysReserved = (maxDays) => Math.ceil(Math.random() * maxDays);
 const generateRandomDay = (maxDays) => Math.ceil(Math.random() * maxDays);

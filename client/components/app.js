@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CheckIn from './check';
+import CheckIn from './checkin';
 import Calendar from './calendar';
 import fetchPriceAction from '../actions/pricesAction';
 import PriceAndRatingContainer from '../containers/priceAndRatingContainer';
