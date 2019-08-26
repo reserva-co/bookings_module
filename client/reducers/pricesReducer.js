@@ -10,8 +10,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case 'FETCH_PRICE':
-      console.log('state', state);
-      console.log(action.payload);
+      console.log('payload', action.payload);
       return {
         ...state,
         price: action.payload.price,

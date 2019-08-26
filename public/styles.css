@@ -30,12 +30,6 @@ hr {
   font-weight: 500;
 }
 
-#dates-container {
-  box-sizing: border-box;
-  color: #484848;
-  margin-bottom: 16px;
-}
-
 .checkin-text {
   display: inline-block;
   vertical-align: middle;
@@ -93,7 +87,19 @@ hr {
   display:flex;
   align-content: center;
   justify-content: center;
-  width: 335px;
+  width: auto;
+  box-sizing: border-box;
+  color: #484848;
+  margin-bottom: 16px;
+}
+
+#checkin-dates-container {
+  display:flex;
+  align-content: center;
+  justify-content: center;
+  width: auto;
+  border: 1px solid lightgrey;
+  margin-bottom: 10px;
 }
 
 #switch-container {
@@ -158,5 +164,10 @@ hr {
 }
 
 .arrow {
-  height: 24px; width: 24px; display: block; fill: currentcolor;
+  height: 24px;
+  width: 24px;
+  display: block;
+  fill: currentcolor;
+  position: relative;
+  top: 4px
 }
