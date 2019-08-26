@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CheckIn from './check';
 import Calendar from './calendar';
-import fetchPrice from '../actions/pricesAction';
+import fetchPriceAction from '../actions/pricesAction';
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.fetchPrice();
+    const { fetchPrice } = this.props;
+    fetchPrice();
   }
 
   render() {
@@ -42,18 +43,21 @@ class App extends React.Component {
 
 App.propTypes = {
   fetchPrice: PropTypes.func.isRequired,
-  price: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  price: state.price.price,
+  price: state.costs.price,
+  rating: state.costs.rating,
+  numberOfReviews: state.costs.numberOfReviews,
+  cleaningFee: state.costs.serviceFee,
+  serviceFee: state.costs.serviceFee,
+  views: state.costs.views,
 });
 
 // gives price to this.props in App
 
-
 const mapDispatchToProps = (dispatch) => ({
-  fetchPrice: () => { dispatch(fetchPrice()); },
+  fetchPrice: () => { dispatch(fetchPriceAction()); },
 });
 
 // gives fetchPrice to this.props in App
