@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export default function fetchPrice() {
-  console.log('fetchsadfsafdsang!!');
   return (dispatch) => {
     axios.get('/api/reservations/prices')
       .then((price) => {
