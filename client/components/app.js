@@ -51,10 +51,10 @@ const mapStateToProps = (state) => ({
   numberOfReviews: state.costs.numberOfReviews,
   cleaningFee: state.costs.serviceFee,
   serviceFee: state.costs.serviceFee,
+  views: state.costs.views,
 });
 
 // gives price to this.props in App
-
 
 const mapDispatchToProps = (dispatch) => ({
   fetchPrice: () => { dispatch(fetchPriceAction()); },

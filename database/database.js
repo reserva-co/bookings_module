@@ -14,6 +14,7 @@ const reservationSchema = new mongoose.Schema({
   price: Number,
   cleaningFee: Number,
   serviceFee: Number,
+  views: Number,
   month1: [Number],
   month2: [Number],
   month3: [Number],
@@ -30,7 +31,7 @@ const generateRating = () => (Math.random() + 4).toFixed(2);
 const generateCleaningFee = () => Math.ceil(Math.random() * 40) + 30;
 const generateServiceFee = () => Math.ceil(Math.random() * 10) + 10;
 const generateNumberOfReviews = () => Math.ceil(Math.random() * 250) + 20;
-
+const generateViews = () => Math.ceil(Math.random() * 250) + 30;
 
 const generateReservedDates = (num, maxDays) => {
   const array = [];
@@ -49,6 +50,7 @@ for (let i = 0; i < 100; i += 1) {
     price: generatePrice(),
     cleaningFee: generateCleaningFee(),
     serviceFee: generateServiceFee(),
+    views: generateViews(),
     month1: generateReservedDates(generateNumberOfDaysReserved(31), 31),
     month2: generateReservedDates(generateNumberOfDaysReserved(30), 30),
     month3: generateReservedDates(generateNumberOfDaysReserved(31), 31),

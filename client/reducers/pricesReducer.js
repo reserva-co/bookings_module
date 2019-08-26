@@ -4,6 +4,7 @@ const initialState = {
   numberOfReviews: null,
   cleaningFee: null,
   serviceFee: null,
+  views: null,
 };
 
 export default function (state = initialState, action) {
@@ -18,6 +19,7 @@ export default function (state = initialState, action) {
         numberOfReviews: action.payload.numberOfReviews,
         serviceFee: action.payload.serviceFee,
         cleaningFee: action.payload.cleaningFee,
+        views: action.payload.views,
       };
     default:
       return state;
