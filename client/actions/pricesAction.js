@@ -1,11 +1,15 @@
 import axios from 'axios';
 
-const fetchPrice = () => (dispatch) => {
-  axios.get('/api/reservations/prices')
-    .then((price) => dispatch({
-      type: 'FETCH_PRICE',
-      payload: price,
-    }));
-};
-
-export default fetchPrice;
+export default function fetchPrice() {
+  console.log('fetchsadfsafdsang!!');
+  return (dispatch) => {
+    axios.get('/api/reservations/prices')
+      .then((price) => {
+        console.log('price', price.data);
+        dispatch({
+          type: 'FETCH_PRICE',
+          payload: price.data,
+        });
+      });
+  };
+}

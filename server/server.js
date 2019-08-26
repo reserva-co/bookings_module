@@ -12,7 +12,7 @@ app.get('/api/reservations', (req, res) => {
     .catch(() => {});
 });
 
-app.get('/api/prices', (req, res) => {
+app.get('/api/reservations/prices', (req, res) => {
   console.log('THIS GET IS WORKING');
   res.send('93');
 });
