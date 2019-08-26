@@ -10,6 +10,9 @@ db.once('open', () => {
 
 const reservationSchema = new mongoose.Schema({
   listingId: String,
+  price: Number,
+  cleaningFee: Number,
+  serviceFee: Number,
   year: Number,
   month1: [Number],
   month2: [Number],
@@ -34,6 +37,8 @@ const generateReservedDates = (num, maxDays) => {
 const getFirstReservation = () => {
   Reservations.findOne({});
 };
+
+// const generatePrice = () =>
 
 for (let i = 0; i < 100; i += 1) {
   Reservations.create({

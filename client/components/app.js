@@ -8,14 +8,8 @@ import Calendar from './calendar';
 import fetchPrice from '../actions/pricesAction';
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   // this.state = { price: 95 };
-  // }
-
   componentDidMount() {
     this.props.fetchPrice();
-    console.log('props', this.props);
   }
 
   render() {
@@ -55,9 +49,13 @@ const mapStateToProps = (state) => ({
   price: state.price.price,
 });
 
+// gives price to this.props in App
 
-const mapDispatchToProps = (dispatch, props) => ({
+
+const mapDispatchToProps = (dispatch) => ({
   fetchPrice: () => { dispatch(fetchPrice()); },
 });
+
+// gives fetchPrice to this.props in App
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
