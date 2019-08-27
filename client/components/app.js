@@ -3,10 +3,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CheckIn from './check';
 import Calendar from './calendar';
 import fetchPriceAction from '../actions/pricesAction';
 import PriceAndRatingContainer from '../containers/priceAndRatingContainer';
+import CheckInContainer from '../containers/checkInContainer';
+import Guests from './guests';
 
 class App extends React.Component {
   componentDidMount() {
@@ -15,17 +16,19 @@ class App extends React.Component {
   }
 
   render() {
+    const { checkin } = this.props;
     return (
       <div>
-        <div id="module-container">
-          <div id="module-container-2">
-            <PriceAndRatingContainer />
-            <CheckIn />
+        <div>
+          <div id="module-container">
+            <div id="module-container-2">
+              <PriceAndRatingContainer />
+              <CheckInContainer />
+              {checkin ? <Calendar /> : null}
+              <Guests />
+            </div>
           </div>
         </div>
-        <br />
-        <br />
-        <Calendar />
       </div>
     );
   }
@@ -35,10 +38,12 @@ App.propTypes = {
   fetchPrice: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  checkin: state.toggleCalendar.checkin,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   fetchPrice: () => { dispatch(fetchPriceAction()); },
 });
 
-// gives fetchPrice to this.props in App
-
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

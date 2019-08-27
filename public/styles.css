@@ -125,7 +125,7 @@ hr {
   margin-top: 10px;
 }
 
-.star-ratings-css {
+.star-ratings {
   unicode-bidi: bidi-override;
   color: grey;
   font-size: 10px;
@@ -133,21 +133,18 @@ hr {
   width: 50px;
   margin: 0;
   position: relative;
-  text-shadow: 0px 1px 0 #a2a2a2;
 }
 
-.star-ratings-css-top {
+.star-ratings-top {
   color: #007D8C;
   padding: 0;
   position: absolute;
   z-index: 1;
   display: block;
-  top: 0;
-  left: 0;
   overflow: hidden;
 }
 
-.star-ratings-css-bottom {
+.star-ratings-bottom {
   padding: 0;
   display: block;
   z-index: 0;
@@ -170,4 +167,22 @@ hr {
   fill: currentcolor;
   position: relative;
   top: 4px
+}
+
+.rating {
+  display: flex;
+  margin-top: 1px;
+}
+
+.popup {  
+  position: absolute;  
+  width: 335px;  
+  height: auto;  
+  background-color: white;
+} 
+
+.popup\_inner {  
+  position: relative;  
+  border-radius: 20px;  
+  background: white;  
 }

@@ -3,7 +3,7 @@
 import React from 'react';
 
 const PriceAndRating = (props) => {
-  const { price, rating } = props;
+  const { price, rating, numberOfReviews } = props;
   const percentage = `${((rating / 5).toFixed(2)) * 100}%`;
   return (
     <div>
@@ -16,13 +16,16 @@ const PriceAndRating = (props) => {
         <span className="small-text">per night</span>
       </span>
       <br />
-      <div className="star-ratings-css">
-        <div className="star-ratings-css-top" style={{ width: percentage }}>
-        ★★★★★
+      <div className="rating">
+        <div className="star-ratings">
+          <div className="star-ratings-top" style={{ width: percentage }}>
+          ★★★★★
+          </div>
+          <div className="star-ratings-bottom">
+          ★★★★★
+          </div>
         </div>
-        <div className="star-ratings-css-bottom">
-        ★★★★★
-        </div>
+        <span className="small-text">{numberOfReviews}</span>
       </div>
       <div className="linebreak">
         <hr />
