@@ -3,10 +3,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CheckIn from './checkin';
 import Calendar from './calendar';
 import fetchPriceAction from '../actions/pricesAction';
 import PriceAndRatingContainer from '../containers/priceAndRatingContainer';
+import CheckInContainer from '../containers/checkInContainer';
 
 class App extends React.Component {
   componentDidMount() {
@@ -20,12 +20,12 @@ class App extends React.Component {
         <div id="module-container">
           <div id="module-container-2">
             <PriceAndRatingContainer />
-            <CheckIn />
+            <CheckInContainer />
           </div>
         </div>
         <br />
         <br />
-        <Calendar />
+        {/* <Calendar /> */}
       </div>
     );
   }

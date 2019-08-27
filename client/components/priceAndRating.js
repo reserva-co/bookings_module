@@ -17,11 +17,11 @@ const PriceAndRating = (props) => {
       </span>
       <br />
       <div className="rating">
-        <div className="star-ratings-css">
-          <div className="star-ratings-css-top" style={{ width: percentage }}>
-        ★★★★★
+        <div className="star-ratings">
+          <div className="star-ratings-top" style={{ width: percentage }}>
+          ★★★★★
           </div>
-          <div className="star-ratings-css-bottom">
+          <div className="star-ratings-bottom">
           ★★★★★
           </div>
         </div>
