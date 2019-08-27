@@ -5,15 +5,20 @@ const initialState = {
 
 const popupCalendarReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'TOGGLE_CHECKIN':
+    case 'TOGGLE_CHECKIN_ON':
       return {
-        ...state,
-        checkin: !state.checkin,
+        checkin: true,
+        checkout: false,
       };
-    case 'TOGGLE_CHECKOUT':
+    case 'TOGGLE_CHECKOUT_ON':
       return {
-        ...state,
-        checkout: !state.checkout,
+        checkin: false,
+        checkout: true,
+      };
+    case 'TOGGLE_CALENDARS_OFF':
+      return {
+        checkin: false,
+        checkout: false,
       };
     default:
       return state;
