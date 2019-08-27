@@ -149,19 +149,23 @@ class Calendar extends React.Component {
     }
 
     return (
-      <div id="big-container">
-        <div id="buttons-and-month">
-          <span><button type="button" onClick={this.onPrevious}>back</button></span>
-          <span id="month-name">
-            {monthName}
-            {' '}
-            {currentYear}
-          </span>
-          <span><button type="button" onClick={this.onNext}>next</button></span>
-        </div>
-        <div id="dates-container">
-          <div id="calendar-container">
-            {output}
+      <div className="popup">
+        <div className="popup\_inner">
+          <div id="big-container">
+            <div id="buttons-and-month">
+              <span><button type="button" onClick={this.onPrevious}>back</button></span>
+              <span id="month-name">
+                {monthName}
+                {' '}
+                {currentYear}
+              </span>
+              <span><button type="button" onClick={this.onNext}>next</button></span>
+            </div>
+            <div id="dates-container">
+              <div id="calendar-container">
+                {output}
+              </div>
+            </div>
           </div>
         </div>
       </div>
