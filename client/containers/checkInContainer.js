@@ -2,17 +2,14 @@ import { connect } from 'react-redux';
 import CheckIn from '../components/checkin';
 import popupCalendarActions from '../actions/popupCalendarActions';
 
-const mapStateToProps = (state) => {
-  console.log('poop', state);
-  return ({
-    checkin: state.toggleCalendar.checkin,
-    checkout: state.toggleCalendar.checkout,
-  });
-};
+const mapStateToProps = (state) => ({
+  checkin: state.toggleCalendar.checkin,
+  checkout: state.toggleCalendar.checkout,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleCheckIn: () => { dispatch(popupCalendarActions.toggleCheckIn()); },
-  toggleCheckOut: () => { dispatch(popupCalendarActions.toggleCheckOut()); },
+  toggleCheckInOn: () => { dispatch(popupCalendarActions.toggleCheckInOn()); },
+  toggleCheckOutOn: () => { dispatch(popupCalendarActions.toggleCheckOutOn()); },
 });
 
 // gives fetchPrice to this.props in App
