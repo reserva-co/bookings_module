@@ -73,6 +73,7 @@ hr {
 
 .booked {
   color: lightgrey;
+  text-decoration: line-through;
 }
 
 .hoverable:hover {
