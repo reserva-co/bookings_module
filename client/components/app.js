@@ -8,6 +8,7 @@ import toggleGuestInfo from '../actions/popupGuestsActions';
 import popupCalendarActions from '../actions/popupCalendarActions';
 import PriceAndRatingContainer from '../containers/priceAndRatingContainer';
 import CheckInContainer from '../containers/checkInContainer';
+import GuestsInfoContainer from '../containers/guestsInfoContainer';
 import Calendar from './calendar';
 import GuestsInfo from './guestsInfo';
 import GuestsContainer from '../containers/guestsContainer';
@@ -64,7 +65,7 @@ class App extends React.Component {
             </div>
             <GuestsContainer />
             <div ref={this.setGuestWrapperRef}>
-              {guestInfo ? <GuestsInfo /> : null}
+              {guestInfo ? <GuestsInfoContainer /> : null}
             </div>
             <div>
               <button type="submit" className="reserve-button"><span><div>Reserve</div></span></button>
