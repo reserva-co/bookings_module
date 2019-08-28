@@ -63,6 +63,10 @@ class Calendar extends React.Component {
     }
   }
 
+  // onDateClick(event) {
+  //   console.lot(event.target);
+  // }
+
   setTheState() {
     this.setState({
       currentMonth: this.date.currentMonth,
