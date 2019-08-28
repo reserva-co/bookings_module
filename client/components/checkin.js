@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 
 const CheckIn = (props) => {
-  const { toggleCheckInOn, toggleCheckOutOn } = props;
+  const { toggleCheckInOn, toggleCheckOutOn, checkInDate } = props;
 
   const SmallText = styled.span`
     font-size: 12px;
@@ -45,7 +45,7 @@ const CheckIn = (props) => {
     <div>
       <SmallText>Dates</SmallText>
       <CheckInDatesContainer>
-        <CheckInText onClick={toggleCheckInOn}>Check-In</CheckInText>
+        <CheckInText onClick={toggleCheckInOn}>{checkInDate ? `${JSON.stringify(checkInDate.month).padStart(2, '0')}/${checkInDate.day.padStart(2, '0')}/${checkInDate.year}` : 'Check In'}</CheckInText>
         <Arrow viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false"><path d="m0 12.5a.5.5 0 0 0 .5.5h21.79l-6.15 6.15a.5.5 0 1 0 .71.71l7-7v-.01a.5.5 0 0 0 .14-.35.5.5 0 0 0 -.14-.35v-.01l-7-7a .5.5 0 0 0 -.71.71l6.15 6.15h-21.79a.5.5 0 0 0 -.5.5z" fillRule="evenodd" /></Arrow>
         <CheckInText onClick={toggleCheckOutOn}>Check-Out</CheckInText>
       </CheckInDatesContainer>

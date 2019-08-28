@@ -108,6 +108,11 @@ const Hoverable = styled(DateBox)`
   }
 `;
 
+const Highlighted = styled(DateBox)`
+  color: white;
+  background-color: #00A699;
+`;
+
 const EmptyBox = styled.div`
   width: 42px;
   height: 42px;
@@ -137,6 +142,7 @@ class Calendar extends React.Component {
     this.onNext = this.onNext.bind(this);
     this.onPrevious = this.onPrevious.bind(this);
     this.setTheState = this.setTheState.bind(this);
+    this.onDateClick = this.onDateClick.bind(this);
   }
 
   componentDidMount() {
@@ -176,9 +182,11 @@ class Calendar extends React.Component {
     }
   }
 
-  // onDateClick(event) {
-  //   console.lot(event.target);
-  // }
+  onDateClick(event) {
+    const { getCheckInDate } = this.props;
+    const { currentMonth, currentYear } = this.state;
+    getCheckInDate(currentMonth, event.target.innerHTML, currentYear);
+  }
 
   setTheState() {
     this.setState({
@@ -219,7 +227,7 @@ class Calendar extends React.Component {
           if (month.includes(i + 1)) {
             output.push(<Booked>{i + 1}</Booked>);
           } else {
-            output.push(<Hoverable>{i + 1}</Hoverable>);
+            output.push(<Hoverable onClick={this.onDateClick}>{i + 1}</Hoverable>);
           }
         }
       } else if (currentMonth < new Date().getMonth()) {
@@ -235,13 +243,13 @@ class Calendar extends React.Component {
           if (month1.includes(i + 1)) {
             output.push(<Booked>{i + 1}</Booked>);
           } else {
-            output.push(<Hoverable>{i + 1}</Hoverable>);
+            output.push(<Hoverable onClick={this.onDateClick}>{i + 1}</Hoverable>);
           }
         }
       }
     } else if (currentYear > new Date().getFullYear()) {
       for (let i = 0; i < numberOfDays; i += 1) {
-        output.push(<Hoverable>{i + 1}</Hoverable>);
+        output.push(<Hoverable onClick={this.onDateClick}>{i + 1}</Hoverable>);
       }
     } else {
       for (let i = 0; i < numberOfDays; i += 1) {

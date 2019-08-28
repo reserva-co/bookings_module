@@ -5,6 +5,8 @@ import popupCalendarActions from '../actions/popupCalendarActions';
 const mapStateToProps = (state) => ({
   checkin: state.toggleCalendar.checkin,
   checkout: state.toggleCalendar.checkout,
+  checkInDate: state.calendar.checkInDate,
+  checkOutDate: state.calendar.checkOutDate,
 });
 
 const mapDispatchToProps = (dispatch) => ({

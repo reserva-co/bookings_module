@@ -4,14 +4,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-// import { Module } from 'module';
 import fetchPriceAction from '../actions/pricesAction';
 import toggleGuestInfo from '../actions/popupGuestsActions';
 import popupCalendarActions from '../actions/popupCalendarActions';
 import PriceAndRatingContainer from '../containers/priceAndRatingContainer';
 import CheckInContainer from '../containers/checkInContainer';
 import GuestsInfoContainer from '../containers/guestsInfoContainer';
-import Calendar from './calendar';
+import CalendarContainer from '../containers/calendarContainer';
 import GuestsContainer from '../containers/guestsContainer';
 
 const ModuleContainer = styled.div`
@@ -113,8 +112,8 @@ class App extends React.Component {
             <PriceAndRatingContainer />
             <CheckInContainer />
             <div ref={this.setWrapperRef}>
-              {checkin ? <Calendar /> : null}
-              {checkout ? <Calendar /> : null}
+              {checkin ? <CalendarContainer /> : null}
+              {checkout ? <CalendarContainer /> : null}
             </div>
             <GuestsContainer />
             <div ref={this.setGuestWrapperRef}>
