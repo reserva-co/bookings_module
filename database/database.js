@@ -39,11 +39,11 @@ const generateNumberOfReviews = () => Math.ceil(Math.random() * 250) + 20;
 const generateViews = () => Math.ceil(Math.random() * 250) + 30;
 
 const generateReservedDates = (num, maxDays) => {
-  const array = [];
+  const obj = {};
   for (let j = 0; j < num; j += 1) {
-    array.push(generateRandomDay(maxDays));
+    obj[generateRandomDay(maxDays)] = true;
   }
-  return array;
+  return Object.keys(obj).sort((a, b) => a - b);
 };
 
 
