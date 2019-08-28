@@ -3,6 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+// import { Module } from 'module';
 import fetchPriceAction from '../actions/pricesAction';
 import toggleGuestInfo from '../actions/popupGuestsActions';
 import popupCalendarActions from '../actions/popupCalendarActions';
@@ -10,8 +12,59 @@ import PriceAndRatingContainer from '../containers/priceAndRatingContainer';
 import CheckInContainer from '../containers/checkInContainer';
 import GuestsInfoContainer from '../containers/guestsInfoContainer';
 import Calendar from './calendar';
-import GuestsInfo from './guestsInfo';
 import GuestsContainer from '../containers/guestsContainer';
+
+const ModuleContainer = styled.div`
+  margin-left: 45px;
+  width: 376px;
+  z-index: 3;
+  margin-top: 32px;
+`;
+
+const ModuleContainerInner = styled.div`
+  padding: 24px;
+  padding-top: 16px;
+  border: 1px solid lightgrey;
+`;
+
+const ReserveButton = styled.button`
+  margin-top: 24px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: normal;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  padding-left: 22px;
+  padding-right: 22px;
+  min-width: 71.1935px;
+  box-shadow: none;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 4px;
+  border-width: 2px;
+  border-style: solid;
+  background: rgb(255, 90, 95);
+  border-color: transparent;
+`;
+
+const SmallCenteredText = styled.div`
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 10px;
+  text-align: center;
+`;
+
+const Body = styled.div`
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  color: #484848;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -54,9 +107,9 @@ class App extends React.Component {
   render() {
     const { checkin, checkout, guestInfo } = this.props;
     return (
-      <div>
-        <div id="module-container">
-          <div id="module-container-2">
+      <Body>
+        <ModuleContainer>
+          <ModuleContainerInner>
             <PriceAndRatingContainer />
             <CheckInContainer />
             <div ref={this.setWrapperRef}>
@@ -68,14 +121,14 @@ class App extends React.Component {
               {guestInfo ? <GuestsInfoContainer /> : null}
             </div>
             <div>
-              <button type="submit" className="reserve-button"><span><div>Reserve</div></span></button>
+              <ReserveButton><span><div>Reserve</div></span></ReserveButton>
             </div>
-            <div className="small-text center-text">
+            <SmallCenteredText>
               <span>You won’t be charged yet</span>
-            </div>
-          </div>
-        </div>
-      </div>
+            </SmallCenteredText>
+          </ModuleContainerInner>
+        </ModuleContainer>
+      </Body>
     );
   }
 }
