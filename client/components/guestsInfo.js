@@ -144,7 +144,7 @@ const GuestsInfo = (props) => {
             <GuestsInfoSection>
               <DescriptionColumn>
                 <span>Infants</span>
-                <span className="subtitle description">Under 2</span>
+                <SubtitleDescription>Under 2</SubtitleDescription>
               </DescriptionColumn>
               <GuestsButton>
                 <AddSubtractButton onClick={subtractInfant}><span><svg viewBox="0 0 24 24" role="img" aria-label="subtract"><rect height="2" rx="1" width="12" x="6" y="11" /></svg></span></AddSubtractButton>
