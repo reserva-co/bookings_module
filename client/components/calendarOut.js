@@ -228,7 +228,7 @@ class CalendarOut extends React.Component {
       month1, month2, month3, month4,
     } = this.state;
 
-    const { checkInDate, mouseHoveredDate } = this.props;
+    const { checkInDate, checkOutDate, mouseHoveredDate } = this.props;
 
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const output = [];
@@ -260,6 +260,8 @@ class CalendarOut extends React.Component {
       }
       for (let i = 0; i < numberOfDays; i += 1) {
         if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
+          output.push(<Highlighted>{i + 1}</Highlighted>);
+        } else if (checkInDate && checkOutDate && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
           output.push(<Highlighted>{i + 1}</Highlighted>);
         } else if (mouseHoveredDate && ((i + 1) > checkInDate.day) && (i + 1) < JSON.parse(mouseHoveredDate.day)) {
           output.push(<GreenHighlighted>{i + 1}</GreenHighlighted>);
