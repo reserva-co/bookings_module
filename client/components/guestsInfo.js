@@ -31,11 +31,13 @@ const GuestsInfo = (props) => {
     border-radius: 3px;
     background: white;
   `;
+
   const GuestsInfoInner = styled.div`
     margin-top: 12px;
     margin-bottom: 12px;
     padding-left: 10px;
   `;
+
   const GuestsInfoSection = styled.div`
     display: flex;
     font-size: 16px;
@@ -43,6 +45,7 @@ const GuestsInfo = (props) => {
     text-align: left;
     padding: 10px;
   `;
+
   const AddSubtractButton = styled.button`
     height: 1em;
     width: 1em;
@@ -63,6 +66,37 @@ const GuestsInfo = (props) => {
     background: transparent;
     border-width: 1px;
   `;
+
+  const DisabledAdultSubtractButton = styled(AddSubtractButton)`
+    ${adults < 2 ? `cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events:none;` : ''}
+  `;
+
+  const DisabledAdultChildrenAddButton = styled(AddSubtractButton)`
+    ${(adults + children) > 5 ? `cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events:none;` : ''}
+  `;
+
+  const DisabledChildSubtractButton = styled(AddSubtractButton)`
+    ${children < 1 ? `cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events:none;` : ''}
+  `;
+
+  const DisabledInfantSubtractButton = styled(AddSubtractButton)`
+    ${infants < 1 ? `cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events:none;` : ''}
+  `;
+
+  const DisabledInfantAddButton = styled(AddSubtractButton)`
+    ${infants > 4 ? `cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events:none;` : ''}
+  `;
+
   const NumberOfGuests = styled.div`
     padding: 5px
   `;
@@ -111,16 +145,16 @@ const GuestsInfo = (props) => {
             <GuestsInfoSection>
               <DescriptionColumn>Adults</DescriptionColumn>
               <GuestsButton>
-                <AddSubtractButton onClick={subtractAdult}><span><svg viewBox="0 0 24 24" role="img" aria-label="subtract"><rect height="2" rx="1" width="12" x="6" y="11" /></svg></span></AddSubtractButton>
+                <DisabledAdultSubtractButton onClick={subtractAdult}><span><svg viewBox="0 0 24 24" role="img" aria-label="subtract"><rect height="2" rx="1" width="12" x="6" y="11" /></svg></span></DisabledAdultSubtractButton>
                 <NumberOfGuests>{adults}</NumberOfGuests>
-                <AddSubtractButton onClick={addAdult}>
+                <DisabledAdultChildrenAddButton onClick={addAdult}>
                   <span>
                     <svg viewBox="0 0 24 24" role="img">
                       <rect height="2" rx="1" width="12" x="6" y="11" />
                       <rect height="12" rx="1" width="2" x="11" y="6" />
                     </svg>
                   </span>
-                </AddSubtractButton>
+                </DisabledAdultChildrenAddButton>
               </GuestsButton>
             </GuestsInfoSection>
             <GuestsInfoSection>
@@ -129,16 +163,16 @@ const GuestsInfo = (props) => {
                 <SubtitleDescription>Ages 2-12</SubtitleDescription>
               </DescriptionColumn>
               <GuestsButton>
-                <AddSubtractButton onClick={subtractChild}><span><svg viewBox="0 0 24 24" role="img" aria-label="subtract"><rect height="2" rx="1" width="12" x="6" y="11" /></svg></span></AddSubtractButton>
+                <DisabledChildSubtractButton onClick={subtractChild}><span><svg viewBox="0 0 24 24" role="img" aria-label="subtract"><rect height="2" rx="1" width="12" x="6" y="11" /></svg></span></DisabledChildSubtractButton>
                 <NumberOfGuests>{children}</NumberOfGuests>
-                <AddSubtractButton onClick={addChild}>
+                <DisabledAdultChildrenAddButton onClick={addChild}>
                   <span>
                     <svg viewBox="0 0 24 24" role="img">
                       <rect height="2" rx="1" width="12" x="6" y="11" />
                       <rect height="12" rx="1" width="2" x="11" y="6" />
                     </svg>
                   </span>
-                </AddSubtractButton>
+                </DisabledAdultChildrenAddButton>
               </GuestsButton>
             </GuestsInfoSection>
             <GuestsInfoSection>
@@ -147,16 +181,16 @@ const GuestsInfo = (props) => {
                 <SubtitleDescription>Under 2</SubtitleDescription>
               </DescriptionColumn>
               <GuestsButton>
-                <AddSubtractButton onClick={subtractInfant}><span><svg viewBox="0 0 24 24" role="img" aria-label="subtract"><rect height="2" rx="1" width="12" x="6" y="11" /></svg></span></AddSubtractButton>
+                <DisabledInfantSubtractButton onClick={subtractInfant}><span><svg viewBox="0 0 24 24" role="img" aria-label="subtract"><rect height="2" rx="1" width="12" x="6" y="11" /></svg></span></DisabledInfantSubtractButton>
                 <NumberOfGuests>{infants}</NumberOfGuests>
-                <AddSubtractButton onClick={addInfant}>
+                <DisabledInfantAddButton onClick={addInfant}>
                   <span>
                     <svg viewBox="0 0 24 24" role="img">
                       <rect height="2" rx="1" width="12" x="6" y="11" />
                       <rect height="12" rx="1" width="2" x="11" y="6" />
                     </svg>
                   </span>
-                </AddSubtractButton>
+                </DisabledInfantAddButton>
               </GuestsButton>
             </GuestsInfoSection>
             <MaxGuestsInfo>

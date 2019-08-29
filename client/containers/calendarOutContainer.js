@@ -6,6 +6,7 @@ import popupCalendarActions from '../actions/popupCalendarActions';
 const mapStateToProps = (state) => ({
   checkInDate: state.calendar.checkInDate,
   checkOutDate: state.calendar.checkOutDate,
+  mouseHoveredDate: state.calendar.mouseHoveredDate,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,6 +15,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getCheckOutDate: (month, day, year) => {
     dispatch(calendarActions.getCheckOutDate(month, day, year));
+  },
+  getMouseHoveredDate: (month, day, year) => {
+    dispatch(calendarActions.getMouseHoveredDate(month, day, year));
+  },
+  removeMouseHoveredDate: () => {
+    dispatch(calendarActions.removeMouseHoveredDate());
   },
   toggleCheckInOn: () => { dispatch(popupCalendarActions.toggleCheckInOn()); },
   toggleCheckOutOn: () => { dispatch(popupCalendarActions.toggleCheckOutOn()); },

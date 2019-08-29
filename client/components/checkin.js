@@ -42,11 +42,11 @@ const CheckIn = (props) => {
     color: grey;
     width: 40%;
     padding: 8px;
-    background-color: ${checkin ? '#79CCCD' : 'white'};
+    background-color: ${checkin ? 'rgb(153, 237, 230)' : 'white'};
   `;
 
   const CheckOutText = styled(CheckInText)`
-    background-color: ${checkout ? '#79CCCD' : 'white'};
+    background-color: ${checkout ? 'rgb(153, 237, 230)' : 'white'};
   `;
 
   return (

@@ -108,9 +108,21 @@ const Hoverable = styled(DateBox)`
   }
 `;
 
+const GreenHoverable = styled(DateBox)`
+  :hover {
+    color: white;
+    background-color: rgb(153, 237, 230);
+  }
+`;
+
 const Highlighted = styled(DateBox)`
   color: white;
   background-color: #00A699;
+`;
+
+const GreenHighlighted = styled(DateBox)`
+  color: white;
+  background-color: rgb(153, 237, 230);
 `;
 
 const EmptyBox = styled.div`
@@ -143,6 +155,8 @@ class CalendarOut extends React.Component {
     this.onPrevious = this.onPrevious.bind(this);
     this.setTheState = this.setTheState.bind(this);
     this.onDateClick = this.onDateClick.bind(this);
+    this.onDateHover = this.onDateHover.bind(this);
+    this.onDateHoverOff = this.onDateHoverOff.bind(this);
   }
 
   componentDidMount() {
@@ -187,6 +201,18 @@ class CalendarOut extends React.Component {
     getCheckOutDate(currentMonth, event.target.innerHTML, currentYear);
   }
 
+  onDateHover(event) {
+    const { getMouseHoveredDate, mouseHoveredDate } = this.props;
+    const { currentMonth, currentYear } = this.state;
+    console.log(mouseHoveredDate);
+    getMouseHoveredDate(currentMonth, event.target.innerHTML, currentYear);
+  }
+
+  onDateHoverOff() {
+    const { removeMouseHoveredDate } = this.props;
+    removeMouseHoveredDate();
+  }
+
   setTheState() {
     this.setState({
       currentMonth: this.date.currentMonth,
@@ -202,7 +228,7 @@ class CalendarOut extends React.Component {
       month1, month2, month3, month4,
     } = this.state;
 
-    const { checkInDate } = this.props;
+    const { checkInDate, mouseHoveredDate } = this.props;
 
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const output = [];
@@ -235,8 +261,10 @@ class CalendarOut extends React.Component {
       for (let i = 0; i < numberOfDays; i += 1) {
         if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
           output.push(<Highlighted>{i + 1}</Highlighted>);
+        } else if (mouseHoveredDate && ((i + 1) > checkInDate.day) && (i + 1) < JSON.parse(mouseHoveredDate.day)) {
+          output.push(<GreenHighlighted>{i + 1}</GreenHighlighted>);
         } else if ((i + 1) > checkInDate.day && (i + 1) < stopDate) {
-          output.push(<Hoverable onClick={this.onDateClick}>{i + 1}</Hoverable>);
+          output.push(<GreenHoverable onMouseEnter={this.onDateHover} onMouseLeave={this.onDateHoverOff} onClick={this.onDateClick}>{i + 1}</GreenHoverable>);
         } else {
           output.push(<Booked>{i + 1}</Booked>);
         }

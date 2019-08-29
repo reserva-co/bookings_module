@@ -1,6 +1,7 @@
 const initialState = {
   checkInDate: null,
   checkOutDate: null,
+  mouseHoveredDate: null,
 };
 
 export default function (state = initialState, action) {
@@ -22,6 +23,20 @@ export default function (state = initialState, action) {
           day: action.payload.day,
           year: action.payload.year,
         },
+      };
+    case 'GET_MOUSE_HOVERED_DATE':
+      return {
+        ...state,
+        mouseHoveredDate: {
+          month: action.payload.month,
+          day: action.payload.day,
+          year: action.payload.year,
+        },
+      };
+    case 'REMOVE_MOUSE_HOVERED_DATE':
+      return {
+        ...state,
+        mouseHoveredDate: null,
       };
     default:
       return state;
