@@ -236,7 +236,7 @@ class CalendarOut extends React.Component {
         if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
           output.push(<Highlighted>{i + 1}</Highlighted>);
         } else if ((i + 1) > checkInDate.day && (i + 1) < stopDate) {
-          output.push(<Hoverable>{i + 1}</Hoverable>);
+          output.push(<Hoverable onClick={this.onDateClick}>{i + 1}</Hoverable>);
         } else {
           output.push(<Booked>{i + 1}</Booked>);
         }
