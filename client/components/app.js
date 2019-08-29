@@ -13,6 +13,7 @@ import GuestsInfoContainer from '../containers/guestsInfoContainer';
 import CalendarContainer from '../containers/calendarContainer';
 import GuestsContainer from '../containers/guestsContainer';
 import CalendarOutContainer from '../containers/calendarOutContainer';
+import FeesContainer from '../containers/feesContainer';
 
 const ModuleContainer = styled.div`
   margin-left: 45px;
@@ -119,6 +120,9 @@ class App extends React.Component {
             <GuestsContainer />
             <div ref={this.setGuestWrapperRef}>
               {guestInfo ? <GuestsInfoContainer /> : null}
+            </div>
+            <div>
+              <FeesContainer />
             </div>
             <div>
               <ReserveButton><span><div>Reserve</div></span></ReserveButton>

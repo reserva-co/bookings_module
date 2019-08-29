@@ -8,7 +8,18 @@ const getCheckOutDate = (month, day, year) => ({
   payload: { month, day, year },
 });
 
+const getMouseHoveredDate = (month, day, year) => ({
+  type: 'GET_MOUSE_HOVERED_DATE',
+  payload: { month, day, year },
+});
+
+const removeMouseHoveredDate = () => ({
+  type: 'REMOVE_MOUSE_HOVERED_DATE',
+});
+
 export default {
   getCheckInDate,
   getCheckOutDate,
+  getMouseHoveredDate,
+  removeMouseHoveredDate,
 };
