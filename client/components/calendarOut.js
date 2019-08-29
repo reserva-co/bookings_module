@@ -121,16 +121,16 @@ const EmptyBox = styled.div`
   margin-bottom: -1px;
 `;
 
-class Calendar extends React.Component {
+class CalendarOut extends React.Component {
   constructor(props) {
     super(props);
     this.date = {
-      currentMonth: new Date().getMonth(),
+      currentMonth: props.checkInDate ? props.checkInDate.month : new Date().getMonth(),
       currentYear: new Date().getFullYear(),
     };
     this.state = {
-      currentDate: new Date().getDate(),
-      currentMonth: new Date().getMonth(),
+      currentDate: props.checkInDate ? props.checkInDate.day : new Date().getDate(),
+      currentMonth: props.checkInDate ? props.checkInDate.month : new Date().getMonth(),
       currentYear: new Date().getFullYear(),
       startDay: new Date(`${this.date.currentYear}-${this.date.currentMonth + 1}-01`).getDay(),
       numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate(),
@@ -148,13 +148,13 @@ class Calendar extends React.Component {
   componentDidMount() {
     axios.get('/api/reservations').then((res) => {
       this.setState({
-        month1: res.data.month1,
-        month2: res.data.month2,
-        month3: res.data.month3,
-        month4: res.data.month4,
+        month1: res.data.month1.map((num) => num + 1),
+        month2: res.data.month2.map((num) => num + 1),
+        month3: res.data.month3.map((num) => num + 1),
+        month4: res.data.month4.map((num) => num + 1),
       });
     })
-      .catch(() => {});
+      .catch(() => { });
   }
 
   onNext() {
@@ -182,10 +182,9 @@ class Calendar extends React.Component {
   }
 
   onDateClick(event) {
-    const { getCheckInDate, toggleCheckOutOn } = this.props;
+    const { getCheckOutDate } = this.props;
     const { currentMonth, currentYear } = this.state;
-    getCheckInDate(currentMonth, event.target.innerHTML, currentYear);
-    toggleCheckOutOn();
+    getCheckOutDate(currentMonth, event.target.innerHTML, currentYear);
   }
 
   setTheState() {
@@ -207,8 +206,10 @@ class Calendar extends React.Component {
 
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const output = [];
-    let monthName; let
-      month;
+    let monthName;
+    let month;
+    let stopDate;
+
 
     for (let i = 0; i < 7; i += 1) {
       output.push(<DayBox>{daysOfWeek[i]}</DayBox>);
@@ -224,7 +225,27 @@ class Calendar extends React.Component {
       default: month = month1;
     }
 
-    if (currentYear === new Date().getFullYear()) {
+    if (checkInDate && currentMonth === checkInDate.month) {
+      for (let i = 0; i < month.length; i += 1) {
+        if (checkInDate.day < month[i]) {
+          stopDate = month[i];
+          break;
+        }
+      }
+      for (let i = 0; i < numberOfDays; i += 1) {
+        if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
+          output.push(<Highlighted>{i + 1}</Highlighted>);
+        } else if ((i + 1) > checkInDate.day && (i + 1) < stopDate) {
+          output.push(<Hoverable>{i + 1}</Hoverable>);
+        } else {
+          output.push(<Booked>{i + 1}</Booked>);
+        }
+      }
+    } else if (checkInDate && currentMonth !== checkInDate.month) {
+      for (let i = 0; i < numberOfDays; i += 1) {
+        output.push(<Booked>{i + 1}</Booked>);
+      }
+    } else if (currentYear === new Date().getFullYear()) {
       if (currentMonth > new Date().getMonth()) {
         for (let i = 0; i < numberOfDays; i += 1) {
           if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
@@ -272,6 +293,7 @@ class Calendar extends React.Component {
       }
     }
 
+
     switch (currentMonth) {
       case (0): monthName = 'January'; break;
       case (1): monthName = 'Febuary'; break;
@@ -287,6 +309,7 @@ class Calendar extends React.Component {
       case (11): monthName = 'December'; break;
       default: monthName = 'Random';
     }
+
     return (
       <Popup>
         <PopupInner>
@@ -312,4 +335,4 @@ class Calendar extends React.Component {
   }
 }
 
-export default Calendar;
+export default CalendarOut;

@@ -14,6 +14,15 @@ export default function (state = initialState, action) {
           year: action.payload.year,
         },
       };
+    case 'GET_CHECK_OUT_DATE':
+      return {
+        ...state,
+        checkOutDate: {
+          month: action.payload.month,
+          day: action.payload.day,
+          year: action.payload.year,
+        },
+      };
     default:
       return state;
   }

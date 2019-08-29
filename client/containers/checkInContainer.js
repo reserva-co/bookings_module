@@ -14,6 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
   toggleCheckOutOn: () => { dispatch(popupCalendarActions.toggleCheckOutOn()); },
 });
 
-// gives fetchPrice to this.props in App
-
 export default connect(mapStateToProps, mapDispatchToProps)(CheckIn);

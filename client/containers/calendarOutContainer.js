@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Calendar from '../components/calendar';
+import CalendarOut from '../components/calendarOut';
 import calendarActions from '../actions/calendarActions';
 import popupCalendarActions from '../actions/popupCalendarActions';
 
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch) => ({
   toggleCheckOutOn: () => { dispatch(popupCalendarActions.toggleCheckOutOn()); },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarOut);

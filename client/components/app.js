@@ -12,6 +12,7 @@ import CheckInContainer from '../containers/checkInContainer';
 import GuestsInfoContainer from '../containers/guestsInfoContainer';
 import CalendarContainer from '../containers/calendarContainer';
 import GuestsContainer from '../containers/guestsContainer';
+import CalendarOutContainer from '../containers/calendarOutContainer';
 
 const ModuleContainer = styled.div`
   margin-left: 45px;
@@ -113,7 +114,7 @@ class App extends React.Component {
             <CheckInContainer />
             <div ref={this.setWrapperRef}>
               {checkin ? <CalendarContainer /> : null}
-              {checkout ? <CalendarContainer /> : null}
+              {checkout ? <CalendarOutContainer /> : null}
             </div>
             <GuestsContainer />
             <div ref={this.setGuestWrapperRef}>
