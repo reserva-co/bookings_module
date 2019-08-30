@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleCheckInOn: () => { dispatch(popupCalendarActions.toggleCheckInOn()); },
   toggleCheckOutOn: () => { dispatch(popupCalendarActions.toggleCheckOutOn()); },
+  toggleCalendarsOff: () => { dispatch(popupCalendarActions.toggleCalendarsOff()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarOut);

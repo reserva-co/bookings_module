@@ -207,13 +207,18 @@ class CalendarOut extends React.Component {
   }
 
   onDateClick(event) {
-    const { getCheckOutDate } = this.props;
+    const {
+      getCheckOutDate, checkInDate, checkOutDate, toggleCalendarsOff,
+    } = this.props;
     const { currentMonth, currentYear } = this.state;
     getCheckOutDate(currentMonth, event.target.innerHTML, currentYear);
+    if ((checkInDate && !checkOutDate) || (checkInDate && checkOutDate)) {
+      toggleCalendarsOff();
+    }
   }
 
   onDateHover(event) {
-    const { getMouseHoveredDate, mouseHoveredDate } = this.props;
+    const { getMouseHoveredDate } = this.props;
     const { currentMonth, currentYear } = this.state;
     getMouseHoveredDate(currentMonth, event.target.innerHTML, currentYear);
   }
@@ -274,7 +279,7 @@ class CalendarOut extends React.Component {
         if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
           output.push(<Highlighted>{i + 1}</Highlighted>);
         } else if (checkInDate && checkOutDate && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
-          output.push(<Highlighted>{i + 1}</Highlighted>);
+          output.push(<Highlighted onClick={this.onDateClick}>{i + 1}</Highlighted>);
         } else if (mouseHoveredDate && ((i + 1) > checkInDate.day) && (i + 1) < JSON.parse(mouseHoveredDate.day)) {
           output.push(<GreenHighlighted>{i + 1}</GreenHighlighted>);
         } else if ((i + 1) > checkInDate.day && (i + 1) < stopDate) {
