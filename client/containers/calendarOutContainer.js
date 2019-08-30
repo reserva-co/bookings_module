@@ -10,6 +10,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  clearDates: () => {
+    dispatch(calendarActions.clearDates());
+  },
   getCheckInDate: (month, day, year) => {
     dispatch(calendarActions.getCheckInDate(month, day, year));
   },

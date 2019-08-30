@@ -121,6 +121,17 @@ const EmptyBox = styled.div`
   margin-bottom: -1px;
 `;
 
+const ClearDates = styled.div`
+  font-weight: 500;
+  margin: 20px;
+  text-align: right;
+  color: #007D8C;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
@@ -203,7 +214,7 @@ class Calendar extends React.Component {
       month1, month2, month3, month4,
     } = this.state;
 
-    const { checkInDate } = this.props;
+    const { checkInDate, checkOutDate, clearDates } = this.props;
 
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const output = [];
@@ -305,6 +316,11 @@ class Calendar extends React.Component {
                 {output}
               </CalendarContainer>
             </DatesContainer>
+            {checkInDate || checkOutDate ? (
+              <ClearDates onClick={clearDates}>
+              Clear Dates
+              </ClearDates>
+            ) : null}
           </BigContainer>
         </PopupInner>
       </Popup>

@@ -17,9 +17,14 @@ const removeMouseHoveredDate = () => ({
   type: 'REMOVE_MOUSE_HOVERED_DATE',
 });
 
+const clearDates = () => ({
+  type: 'CLEAR_DATES',
+});
+
 export default {
   getCheckInDate,
   getCheckOutDate,
   getMouseHoveredDate,
   removeMouseHoveredDate,
+  clearDates,
 };

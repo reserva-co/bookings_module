@@ -38,6 +38,12 @@ export default function (state = initialState, action) {
         ...state,
         mouseHoveredDate: null,
       };
+    case 'CLEAR_DATES':
+      return {
+        ...state,
+        checkInDate: null,
+        checkOutDate: null,
+      };
     default:
       return state;
   }

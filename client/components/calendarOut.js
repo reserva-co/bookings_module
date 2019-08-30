@@ -133,6 +133,17 @@ const EmptyBox = styled.div`
   margin-bottom: -1px;
 `;
 
+const ClearDates = styled.div`
+  font-weight: 500;
+  margin: 20px;
+  text-align: right;
+  color: #007D8C;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
 class CalendarOut extends React.Component {
   constructor(props) {
     super(props);
@@ -204,7 +215,6 @@ class CalendarOut extends React.Component {
   onDateHover(event) {
     const { getMouseHoveredDate, mouseHoveredDate } = this.props;
     const { currentMonth, currentYear } = this.state;
-    console.log(mouseHoveredDate);
     getMouseHoveredDate(currentMonth, event.target.innerHTML, currentYear);
   }
 
@@ -228,7 +238,9 @@ class CalendarOut extends React.Component {
       month1, month2, month3, month4,
     } = this.state;
 
-    const { checkInDate, checkOutDate, mouseHoveredDate } = this.props;
+    const {
+      checkInDate, checkOutDate, mouseHoveredDate, clearDates,
+    } = this.props;
 
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const output = [];
@@ -323,7 +335,6 @@ class CalendarOut extends React.Component {
       }
     }
 
-
     switch (currentMonth) {
       case (0): monthName = 'January'; break;
       case (1): monthName = 'Febuary'; break;
@@ -358,6 +369,11 @@ class CalendarOut extends React.Component {
                 {output}
               </CalendarContainer>
             </DatesContainer>
+            {checkInDate || checkOutDate ? (
+              <ClearDates onClick={clearDates}>
+                Clear Dates
+              </ClearDates>
+            ) : null}
           </BigContainer>
         </PopupInner>
       </Popup>
