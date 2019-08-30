@@ -21,10 +21,15 @@ const clearDates = () => ({
   type: 'CLEAR_DATES',
 });
 
+const clearCheckOutDate = () => ({
+  type: 'CLEAR_CHECK_OUT_DATE',
+});
+
 export default {
   getCheckInDate,
   getCheckOutDate,
   getMouseHoveredDate,
   removeMouseHoveredDate,
   clearDates,
+  clearCheckOutDate,
 };

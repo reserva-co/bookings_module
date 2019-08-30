@@ -44,6 +44,11 @@ export default function (state = initialState, action) {
         checkInDate: null,
         checkOutDate: null,
       };
+    case 'CLEAR_CHECK_OUT_DATE':
+      return {
+        ...state,
+        checkOutDate: null,
+      };
     default:
       return state;
   }

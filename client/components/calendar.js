@@ -136,12 +136,12 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.date = {
-      currentMonth: new Date().getMonth(),
+      currentMonth: props.checkOutDate ? props.checkOutDate.month : new Date().getMonth(),
       currentYear: new Date().getFullYear(),
     };
     this.state = {
-      currentDate: new Date().getDate(),
-      currentMonth: new Date().getMonth(),
+      currentDate: props.checkOutDate ? props.checkOutDate.day : new Date().getDate(),
+      currentMonth: props.checkOutDate ? props.checkOutDate.month : new Date().getMonth(),
       currentYear: new Date().getFullYear(),
       startDay: new Date(`${this.date.currentYear}-${this.date.currentMonth + 1}-01`).getDay(),
       numberOfDays: new Date(this.date.currentYear, this.date.currentMonth, 0).getDate(),
@@ -193,9 +193,14 @@ class Calendar extends React.Component {
   }
 
   onDateClick(event) {
-    const { getCheckInDate, toggleCheckOutOn } = this.props;
+    const {
+      getCheckInDate, toggleCheckOutOn, checkOutDate, clearCheckOutDate,
+    } = this.props;
     const { currentMonth, currentYear } = this.state;
     getCheckInDate(currentMonth, event.target.innerHTML, currentYear);
+    if (checkOutDate && JSON.parse(event.target.innerHTML) > JSON.parse(checkOutDate.day) && (currentMonth === checkOutDate.month)) {
+      clearCheckOutDate();
+    }
     toggleCheckOutOn();
   }
 
@@ -214,12 +219,15 @@ class Calendar extends React.Component {
       month1, month2, month3, month4,
     } = this.state;
 
-    const { checkInDate, checkOutDate, clearDates } = this.props;
+    const {
+      checkInDate, checkOutDate, clearDates, mouseHoveredDate,
+    } = this.props;
 
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const output = [];
-    let monthName; let
-      month;
+    let monthName;
+    let month;
+    let stopDate;
 
     for (let i = 0; i < 7; i += 1) {
       output.push(<DayBox>{daysOfWeek[i]}</DayBox>);
@@ -235,11 +243,35 @@ class Calendar extends React.Component {
       default: month = month1;
     }
 
-    if (currentYear === new Date().getFullYear()) {
+    if (checkOutDate && !checkInDate && currentMonth === checkOutDate.month) {
+      for (let i = 0; i < month.length; i += 1) {
+        if (checkOutDate.day < month[i]) {
+          stopDate = month[i - 1];
+          break;
+        }
+      }
+      for (let i = 0; i < numberOfDays; i += 1) {
+        if (checkOutDate && currentYear === checkOutDate.year && currentMonth === checkOutDate.month && `${(i + 1)}` === checkOutDate.day) {
+          output.push(<Highlighted>{i + 1}</Highlighted>);
+        } else if (checkInDate && checkOutDate && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
+          output.push(<Highlighted onClick={this.onDateClick}>{i + 1}</Highlighted>);
+        } else if (checkOutDate && (i + 1) < checkOutDate.day && (i + 1) > stopDate) {
+          output.push(<Hoverable onClick={this.onDateClick}>{i + 1}</Hoverable>);
+        } else {
+          output.push(<Booked>{i + 1}</Booked>);
+        }
+      }
+    } else if (checkInDate && currentMonth !== checkInDate.month) {
+      for (let i = 0; i < numberOfDays; i += 1) {
+        output.push(<Booked>{i + 1}</Booked>);
+      }
+    } else if (currentYear === new Date().getFullYear()) {
       if (currentMonth > new Date().getMonth()) {
         for (let i = 0; i < numberOfDays; i += 1) {
           if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
             output.push(<Highlighted>{i + 1}</Highlighted>);
+          } else if (checkInDate && checkOutDate && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
+            output.push(<Highlighted onClick={this.onDateClick}>{i + 1}</Highlighted>);
           } else if (month.includes(i + 1)) {
             output.push(<Booked>{i + 1}</Booked>);
           } else {

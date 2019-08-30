@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
   clearDates: () => {
     dispatch(calendarActions.clearDates());
   },
+  clearCheckOutDate: () => {
+    dispatch(calendarActions.clearCheckOutDate());
+  },
   getCheckInDate: (month, day, year) => {
     dispatch(calendarActions.getCheckInDate(month, day, year));
   },

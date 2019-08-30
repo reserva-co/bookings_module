@@ -208,12 +208,14 @@ class CalendarOut extends React.Component {
 
   onDateClick(event) {
     const {
-      getCheckOutDate, checkInDate, checkOutDate, toggleCalendarsOff,
+      getCheckOutDate, toggleCheckInOn, checkInDate, checkOutDate, toggleCalendarsOff,
     } = this.props;
     const { currentMonth, currentYear } = this.state;
     getCheckOutDate(currentMonth, event.target.innerHTML, currentYear);
     if ((checkInDate && !checkOutDate) || (checkInDate && checkOutDate)) {
       toggleCalendarsOff();
+    } else {
+      toggleCheckInOn();
     }
   }
 
