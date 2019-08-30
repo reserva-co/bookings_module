@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const LineBreak = styled.hr`
   height: 1px;
@@ -77,6 +78,14 @@ $
     );
   }
   return null;
+};
+
+Fees.propTypes = {
+  price: PropTypes.number.isRequired,
+  cleaningFee: PropTypes.number.isRequired,
+  serviceFee: PropTypes.number.isRequired,
+  checkInDate: PropTypes.objectOf.isRequired,
+  checkOutDate: PropTypes.objectOf.isRequired,
 };
 
 export default Fees;

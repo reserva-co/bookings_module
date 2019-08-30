@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Guests = (props) => {
   const {
@@ -41,7 +42,7 @@ const Guests = (props) => {
   `;
 
   return (
-    <div onClick={toggleGuestInfoOn}>
+    <div onClick={toggleGuestInfoOn} role="presentation">
       <SmallText>Guests</SmallText>
       <GuestsContainer>
         <GuestsText>
@@ -56,6 +57,13 @@ Guests
       </GuestsContainer>
     </div>
   );
+};
+
+Guests.propTypes = {
+  toggleGuestInfoOn: PropTypes.func.isRequired,
+  adults: PropTypes.number.isRequired,
+  children: PropTypes.number.isRequired,
+  infants: PropTypes.number.isRequired,
 };
 
 export default Guests;

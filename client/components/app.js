@@ -138,8 +138,12 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  checkin: PropTypes.bool.isRequired,
+  checkout: PropTypes.bool.isRequired,
+  guestInfo: PropTypes.objectOf.isRequired,
   fetchPrice: PropTypes.func.isRequired,
   toggleCalendarsOff: PropTypes.func.isRequired,
+  toggleGuestInfoOff: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -3,6 +3,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Popup = styled.div`
   position: absolute;  
@@ -198,7 +199,8 @@ class Calendar extends React.Component {
     } = this.props;
     const { currentMonth, currentYear } = this.state;
     getCheckInDate(currentMonth, event.target.innerHTML, currentYear);
-    if (checkOutDate && JSON.parse(event.target.innerHTML) > JSON.parse(checkOutDate.day) && (currentMonth === checkOutDate.month)) {
+    if (checkOutDate && JSON.parse(event.target.innerHTML) > JSON.parse(checkOutDate.day)
+    && (currentMonth === checkOutDate.month)) {
       clearCheckOutDate();
     }
     toggleCheckOutOn();
@@ -220,7 +222,7 @@ class Calendar extends React.Component {
     } = this.state;
 
     const {
-      checkInDate, checkOutDate, clearDates, mouseHoveredDate,
+      checkInDate, checkOutDate, clearDates,
     } = this.props;
 
     const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -253,7 +255,8 @@ class Calendar extends React.Component {
       for (let i = 0; i < numberOfDays; i += 1) {
         if (checkOutDate && currentYear === checkOutDate.year && currentMonth === checkOutDate.month && `${(i + 1)}` === checkOutDate.day) {
           output.push(<Highlighted>{i + 1}</Highlighted>);
-        } else if (checkInDate && checkOutDate && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
+        } else if (checkInDate && checkOutDate
+          && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
           output.push(<Highlighted onClick={this.onDateClick}>{i + 1}</Highlighted>);
         } else if (checkOutDate && (i + 1) < checkOutDate.day && (i + 1) > stopDate) {
           output.push(<Hoverable onClick={this.onDateClick}>{i + 1}</Hoverable>);
@@ -270,7 +273,8 @@ class Calendar extends React.Component {
         for (let i = 0; i < numberOfDays; i += 1) {
           if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
             output.push(<Highlighted>{i + 1}</Highlighted>);
-          } else if (checkInDate && checkOutDate && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
+          } else if (checkInDate && checkOutDate
+            && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
             output.push(<Highlighted onClick={this.onDateClick}>{i + 1}</Highlighted>);
           } else if (month.includes(i + 1)) {
             output.push(<Booked>{i + 1}</Booked>);
@@ -359,5 +363,14 @@ class Calendar extends React.Component {
     );
   }
 }
+
+Calendar.propTypes = {
+  checkOutDate: PropTypes.objectOf.isRequired,
+  checkInDate: PropTypes.objectOf.isRequired,
+  clearCheckOutDate: PropTypes.func.isRequired,
+  getCheckInDate: PropTypes.func.isRequired,
+  toggleCheckOutOn: PropTypes.func.isRequired,
+  clearDates: PropTypes.func.isRequired,
+};
 
 export default Calendar;

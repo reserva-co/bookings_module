@@ -3,6 +3,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 
 const CheckIn = (props) => {
@@ -59,6 +60,15 @@ const CheckIn = (props) => {
       </CheckInDatesContainer>
     </div>
   );
+};
+
+CheckIn.propTypes = {
+  checkout: PropTypes.bool.isRequired,
+  checkin: PropTypes.bool.isRequired,
+  checkOutDate: PropTypes.func.isRequired,
+  checkInDate: PropTypes.func.isRequired,
+  toggleCheckInOn: PropTypes.func.isRequired,
+  toggleCheckOutOn: PropTypes.func.isRequired,
 };
 
 export default CheckIn;

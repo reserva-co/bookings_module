@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 
 const GuestsInfo = (props) => {
@@ -25,7 +26,7 @@ const GuestsInfo = (props) => {
     background: white;  
   `;
 
-  const GuestsInfo = styled.div`
+  const GuestsInfoOutter = styled.div`
     width: 326px;
     box-sizing: border-box;
     border: 1px solid lightgrey;
@@ -141,7 +142,7 @@ const GuestsInfo = (props) => {
   return (
     <Popup>
       <PopupInner>
-        <GuestsInfo>
+        <GuestsInfoOutter>
           <GuestsInfoInner>
             <GuestsInfoSection>
               <DescriptionColumn>Adults</DescriptionColumn>
@@ -199,10 +200,24 @@ const GuestsInfo = (props) => {
               <CloseButton onClick={toggleGuestInfoOff}>Close</CloseButton>
             </MaxGuestsInfo>
           </GuestsInfoInner>
-        </GuestsInfo>
+        </GuestsInfoOutter>
       </PopupInner>
     </Popup>
   );
 };
+
+GuestsInfo.propTypes = {
+  adults: PropTypes.number.isRequired,
+  children: PropTypes.number.isRequired,
+  infants: PropTypes.number.isRequired,
+  addAdult: PropTypes.func.isRequired,
+  subtractAdult: PropTypes.func.isRequired,
+  addChild: PropTypes.func.isRequired,
+  subtractChild: PropTypes.func.isRequired,
+  addInfant: PropTypes.func.isRequired,
+  subtractInfant: PropTypes.func.isRequired,
+  toggleGuestInfoOff: PropTypes.func.isRequired,
+};
+
 
 export default GuestsInfo;

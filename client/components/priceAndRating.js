@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PriceAndRating = (props) => {
   const { price, rating, numberOfReviews } = props;
@@ -84,5 +85,12 @@ const PriceAndRating = (props) => {
     </div>
   );
 };
+
+PriceAndRating.propTypes = {
+  price: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  numberOfReviews: PropTypes.number.isRequired,
+};
+
 
 export default PriceAndRating;

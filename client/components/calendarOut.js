@@ -3,6 +3,8 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 
 const Popup = styled.div`
   position: absolute;  
@@ -280,12 +282,22 @@ class CalendarOut extends React.Component {
       for (let i = 0; i < numberOfDays; i += 1) {
         if (checkInDate && currentYear === checkInDate.year && currentMonth === checkInDate.month && `${(i + 1)}` === checkInDate.day) {
           output.push(<Highlighted>{i + 1}</Highlighted>);
-        } else if (checkInDate && checkOutDate && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
+        } else if (checkInDate && checkOutDate
+          && ((i + 1) > checkInDate.day) && (i + 1) <= checkOutDate.day) {
           output.push(<Highlighted onClick={this.onDateClick}>{i + 1}</Highlighted>);
-        } else if (mouseHoveredDate && ((i + 1) > checkInDate.day) && (i + 1) < JSON.parse(mouseHoveredDate.day)) {
+        } else if (mouseHoveredDate
+          && ((i + 1) > checkInDate.day) && (i + 1) < JSON.parse(mouseHoveredDate.day)) {
           output.push(<GreenHighlighted>{i + 1}</GreenHighlighted>);
         } else if ((i + 1) > checkInDate.day && (i + 1) < stopDate) {
-          output.push(<GreenHoverable onMouseEnter={this.onDateHover} onMouseLeave={this.onDateHoverOff} onClick={this.onDateClick}>{i + 1}</GreenHoverable>);
+          output.push(
+            <GreenHoverable
+              onMouseEnter={this.onDateHover}
+              onMouseLeave={this.onDateHoverOff}
+              onClick={this.onDateClick}
+            >
+              {i + 1}
+            </GreenHoverable>,
+          );
         } else {
           output.push(<Booked>{i + 1}</Booked>);
         }
@@ -387,5 +399,17 @@ class CalendarOut extends React.Component {
     );
   }
 }
+
+CalendarOut.propTypes = {
+  checkOutDate: PropTypes.objectOf.isRequired,
+  checkInDate: PropTypes.objectOf.isRequired,
+  mouseHoveredDate: PropTypes.func.isRequired,
+  getCheckOutDate: PropTypes.func.isRequired,
+  getMouseHoveredDate: PropTypes.func.isRequired,
+  clearDates: PropTypes.func.isRequired,
+  removeMouseHoveredDate: PropTypes.func.isRequired,
+  toggleCheckInOn: PropTypes.func.isRequired,
+  toggleCalendarsOff: PropTypes.func.isRequired,
+};
 
 export default CalendarOut;
