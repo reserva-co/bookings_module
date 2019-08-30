@@ -14,6 +14,8 @@ const Popup = styled.div`
   z-index: 1;
 `;
 
+Popup.displayName = 'PopupCalendarOut';
+
 const PopupInner = styled.div`
   position: relative;  
   border-radius: 20px;  
@@ -61,6 +63,8 @@ const MonthName = styled.div`
   font-size: 20px;
   font-weight: 700;
 `;
+
+MonthName.displayName = 'MonthName';
 
 const DatesContainer = styled.div`
   display:flex;

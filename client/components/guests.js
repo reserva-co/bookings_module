@@ -14,6 +14,8 @@ const Guests = (props) => {
     font-weight: 500;
   `;
 
+  SmallText.displayName = 'GuestsSmallText';
+
   const GuestsContainer = styled.div`
     display:flex;
     justify-content: space-between;

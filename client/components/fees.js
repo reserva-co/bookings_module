@@ -17,6 +17,8 @@ const FeesSection = styled.div`
   justify-content: space-between;
 `;
 
+FeesSection.displayName = 'FeesSection';
+
 const FeesSectionFirst = styled(FeesSection)`
   margin-top: 30px;
 `;

@@ -17,6 +17,8 @@ const CheckIn = (props) => {
     font-weight: 500;
   `;
 
+  SmallText.displayName = 'CheckInSmallText';
+
   const CheckInDatesContainer = styled.div`
     display:flex;
     align-content: center;
@@ -46,9 +48,13 @@ const CheckIn = (props) => {
     background-color: ${checkin ? 'rgb(153, 237, 230)' : 'white'};
   `;
 
+  CheckInText.displayName = 'CheckInText';
+
   const CheckOutText = styled(CheckInText)`
     background-color: ${checkout ? 'rgb(153, 237, 230)' : 'white'};
   `;
+
+  CheckOutText.displayName = 'CheckOutText';
 
   return (
     <div>

@@ -13,6 +13,8 @@ const PriceAndRating = (props) => {
     font-weight: 600;
   `;
 
+  PriceName.displayName = 'PriceName';
+
   const SmallText = styled.span`
     font-size: 12px;
     font-weight: 500;

@@ -102,9 +102,14 @@ const GuestsInfo = (props) => {
   const NumberOfGuests = styled.div`
     padding: 5px
   `;
+
+  NumberOfGuests.displayName = 'NumberOfGuests';
+
   const DescriptionColumn = styled.div`
     width: 50%;
   `;
+
+  DescriptionColumn.displayName = 'DescriptionColumn';
 
   const GuestsButton = styled.div`
     width: 50%;

@@ -53,6 +53,22 @@ describe('Calendar Actions', () => {
     expect(calendarActions.removeMouseHoveredDate())
       .toEqual(expectedAction);
   });
+
+  it('should create an action to clear date', () => {
+    const expectedAction = {
+      type: 'CLEAR_DATES',
+    };
+    expect(calendarActions.clearDates())
+      .toEqual(expectedAction);
+  });
+
+  it('should create an action to clear check out date', () => {
+    const expectedAction = {
+      type: 'CLEAR_CHECK_OUT_DATE',
+    };
+    expect(calendarActions.clearCheckOutDate())
+      .toEqual(expectedAction);
+  });
 });
 
 describe('Guests Info Actions', () => {

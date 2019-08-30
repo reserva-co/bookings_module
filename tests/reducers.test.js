@@ -155,6 +155,58 @@ describe('Calendar Reducer', () => {
       },
     );
   });
+
+  it('should handle CLEAR_DATES', () => {
+    expect(
+      calendarReducer(undefined, {
+        type: 'CLEAR_DATES',
+      }),
+    ).toEqual(
+      {
+        checkInDate: null,
+        checkOutDate: null,
+        mouseHoveredDate: null,
+      },
+    );
+
+    expect(
+      calendarReducer({ checkInDate: { month: 12, day: 14, year: 2019 }, checkOutDate: { month: 12, day: 14, year: 2019 }, mouseHoveredDate: null }, {
+        type: 'CLEAR_DATES',
+      }),
+    ).toEqual(
+      {
+        checkInDate: null,
+        checkOutDate: null,
+        mouseHoveredDate: null,
+      },
+    );
+  });
+
+  it('should handle CLEAR_CHECK_OUT_DATE', () => {
+    expect(
+      calendarReducer(undefined, {
+        type: 'CLEAR_CHECK_OUT_DATE',
+      }),
+    ).toEqual(
+      {
+        checkInDate: null,
+        checkOutDate: null,
+        mouseHoveredDate: null,
+      },
+    );
+
+    expect(
+      calendarReducer({ checkInDate: null, checkOutDate: { month: 12, day: 14, year: 2019 }, mouseHoveredDate: null }, {
+        type: 'CLEAR_CHECK_OUT_DATE',
+      }),
+    ).toEqual(
+      {
+        checkInDate: null,
+        checkOutDate: null,
+        mouseHoveredDate: null,
+      },
+    );
+  });
 });
 
 describe('Guests Info Reducer', () => {

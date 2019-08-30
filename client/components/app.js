@@ -54,6 +54,8 @@ const ReserveButton = styled.button`
   border-color: transparent;
 `;
 
+ReserveButton.displayName = 'ReserveButton';
+
 const SmallCenteredText = styled.div`
   font-size: 12px;
   font-weight: 500;
@@ -61,13 +63,15 @@ const SmallCenteredText = styled.div`
   text-align: center;
 `;
 
+SmallCenteredText.displayName = 'SmallCenteredText';
+
 const Body = styled.div`
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
   color: #484848;
 `;
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -128,7 +132,7 @@ class App extends React.Component {
               <ReserveButton><span><div>Reserve</div></span></ReserveButton>
             </div>
             <SmallCenteredText>
-              <span>You won’t be charged yet</span>
+              <span>You won't be charged yet</span>
             </SmallCenteredText>
           </ModuleContainerInner>
         </ModuleContainer>

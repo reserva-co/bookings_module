@@ -13,11 +13,15 @@ const Popup = styled.div`
   z-index: 1;
 `;
 
+Popup.displayName = 'PopupCalendar';
+
 const PopupInner = styled.div`
   position: relative;  
   border-radius: 20px;  
   background: white;
 `;
+
+PopupInner.displayName = 'PopupInnerCalendar';
 
 const BigContainer = styled.div`
   border: 1px solid lightgrey;
@@ -30,6 +34,8 @@ const ButtonAndMonthName = styled.div`
   justify-content: space-around;
   margin-top: 10px;
 `;
+
+ButtonAndMonthName.displayName = 'ButtonAndMonthName';
 
 const NextPrevButton = styled.button`
   cursor: pointer;
@@ -60,6 +66,8 @@ const MonthName = styled.div`
   font-size: 20px;
   font-weight: 700;
 `;
+
+MonthName.displayName = 'MonthName';
 
 const DatesContainer = styled.div`
   display:flex;
