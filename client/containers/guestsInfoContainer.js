@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import GuestsInfo from '../components/guestsInfo';
 import guestsInfoActions from '../actions/guestsInfoActions';
+import popupGuestsActions from '../actions/popupGuestsActions';
 
 const mapStateToProps = (state) => ({
   adults: state.guestsInfo.adults,
@@ -15,6 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   subtractChild: () => { dispatch(guestsInfoActions.subtractChild()); },
   addInfant: () => { dispatch(guestsInfoActions.addInfant()); },
   subtractInfant: () => { dispatch(guestsInfoActions.subtractInfant()); },
+  toggleGuestInfoOff: () => { dispatch(popupGuestsActions.toggleGuestInfoOff()); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GuestsInfo);

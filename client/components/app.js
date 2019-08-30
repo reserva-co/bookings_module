@@ -142,14 +142,11 @@ App.propTypes = {
   toggleCalendarsOff: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  console.log('lol', state);
-  return ({
-    checkin: state.toggleCalendar.checkin,
-    checkout: state.toggleCalendar.checkout,
-    guestInfo: state.toggleGuestInfo,
-  });
-};
+const mapStateToProps = (state) => ({
+  checkin: state.toggleCalendar.checkin,
+  checkout: state.toggleCalendar.checkout,
+  guestInfo: state.toggleGuestInfo,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   fetchPrice: () => { dispatch(fetchPriceAction()); },

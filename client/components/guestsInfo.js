@@ -8,6 +8,7 @@ const GuestsInfo = (props) => {
     adults, children, infants,
     addAdult, addChild, addInfant,
     subtractAdult, subtractChild, subtractInfant,
+    toggleGuestInfoOff,
   } = props;
 
   const Popup = styled.div`
@@ -195,7 +196,7 @@ const GuestsInfo = (props) => {
             </GuestsInfoSection>
             <MaxGuestsInfo>
               <span>2 guests maximum. Infants don’t count toward the number of guests.</span>
-              <CloseButton>Close</CloseButton>
+              <CloseButton onClick={toggleGuestInfoOff}>Close</CloseButton>
             </MaxGuestsInfo>
           </GuestsInfoInner>
         </GuestsInfo>
