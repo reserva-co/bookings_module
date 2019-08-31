@@ -291,7 +291,14 @@ class CalendarOut extends React.Component {
           output.push(<Highlighted onClick={this.onDateClick}>{i + 1}</Highlighted>);
         } else if (mouseHoveredDate
           && ((i + 1) > checkInDate.day) && (i + 1) < JSON.parse(mouseHoveredDate.day)) {
-          output.push(<GreenHighlighted>{i + 1}</GreenHighlighted>);
+          output.push(
+            <GreenHighlighted
+              onMouseEnter={this.onDateHover}
+              onMouseLeave={this.onDateHoverOff}
+            >
+              {i + 1}
+            </GreenHighlighted>,
+          );
         } else if ((i + 1) > checkInDate.day && (i + 1) < stopDate) {
           output.push(
             <GreenHoverable
