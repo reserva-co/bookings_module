@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const LineBreak = styled.hr`
   height: 1px;
@@ -15,6 +16,8 @@ const FeesSection = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+FeesSection.displayName = 'FeesSection';
 
 const FeesSectionFirst = styled(FeesSection)`
   margin-top: 30px;
@@ -77,6 +80,30 @@ $
     );
   }
   return null;
+};
+
+Fees.propTypes = {
+  price: PropTypes.number,
+  cleaningFee: PropTypes.number,
+  serviceFee: PropTypes.number,
+  checkInDate: PropTypes.shape({
+    month: PropTypes.number,
+    day: PropTypes.string,
+    year: PropTypes.number,
+  }),
+  checkOutDate: PropTypes.shape({
+    month: PropTypes.number,
+    day: PropTypes.string,
+    year: PropTypes.number,
+  }),
+};
+
+Fees.defaultProps = {
+  price: null,
+  cleaningFee: null,
+  serviceFee: null,
+  checkInDate: null,
+  checkOutDate: null,
 };
 
 export default Fees;

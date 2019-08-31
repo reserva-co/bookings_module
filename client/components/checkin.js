@@ -3,6 +3,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 
 const CheckIn = (props) => {
@@ -15,6 +16,8 @@ const CheckIn = (props) => {
     font-size: 12px;
     font-weight: 500;
   `;
+
+  SmallText.displayName = 'CheckInSmallText';
 
   const CheckInDatesContainer = styled.div`
     display:flex;
@@ -45,9 +48,13 @@ const CheckIn = (props) => {
     background-color: ${checkin ? 'rgb(153, 237, 230)' : 'white'};
   `;
 
+  CheckInText.displayName = 'CheckInText';
+
   const CheckOutText = styled(CheckInText)`
     background-color: ${checkout ? 'rgb(153, 237, 230)' : 'white'};
   `;
+
+  CheckOutText.displayName = 'CheckOutText';
 
   return (
     <div>
@@ -59,6 +66,28 @@ const CheckIn = (props) => {
       </CheckInDatesContainer>
     </div>
   );
+};
+
+CheckIn.propTypes = {
+  checkout: PropTypes.bool.isRequired,
+  checkin: PropTypes.bool.isRequired,
+  checkOutDate: PropTypes.shape({
+    month: PropTypes.number,
+    day: PropTypes.string,
+    year: PropTypes.number,
+  }),
+  checkInDate: PropTypes.shape({
+    month: PropTypes.number,
+    day: PropTypes.string,
+    year: PropTypes.number,
+  }),
+  toggleCheckInOn: PropTypes.func.isRequired,
+  toggleCheckOutOn: PropTypes.func.isRequired,
+};
+
+CheckIn.defaultProps = {
+  checkOutDate: null,
+  checkInDate: null,
 };
 
 export default CheckIn;

@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-undef */
 
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+// import configureMockStore from 'redux-mock-store';
+// import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 
 import calendarActions from '../client/actions/calendarActions';
@@ -12,8 +12,8 @@ import popupGuestsActions from '../client/actions/popupGuestsActions';
 // import fetchPriceAction from '../client/actions/pricesAction';
 // import reservationAction from '../client/actions/reservationsAction';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+// const middlewares = [thunk];
+// const mockStore = configureMockStore(middlewares);
 
 describe('Calendar Actions', () => {
   it('should create an action to get a checkin date', () => {
@@ -51,6 +51,22 @@ describe('Calendar Actions', () => {
       type: 'REMOVE_MOUSE_HOVERED_DATE',
     };
     expect(calendarActions.removeMouseHoveredDate())
+      .toEqual(expectedAction);
+  });
+
+  it('should create an action to clear date', () => {
+    const expectedAction = {
+      type: 'CLEAR_DATES',
+    };
+    expect(calendarActions.clearDates())
+      .toEqual(expectedAction);
+  });
+
+  it('should create an action to clear check out date', () => {
+    const expectedAction = {
+      type: 'CLEAR_CHECK_OUT_DATE',
+    };
+    expect(calendarActions.clearCheckOutDate())
       .toEqual(expectedAction);
   });
 });
@@ -156,22 +172,21 @@ describe('Prices Async Actions', () => {
   it('creates a FETCH_PRICE when successfully fetching prices from api', () => {
     fetchMock.getOnce('/api/reservations/prices', 200);
   });
-  const payload = {
-    price: 149, rating: 4.5, numberOfReviews: 500, cleaningFee: 20, serviceFee: 10, views: 100,
-  };
-  const expectedAction = {
-    type: 'FETCH_PRICE',
-    payload,
-  };
-  const store = mockStore({
-    prices: null,
-    rating: null,
-    numberOfReviews: null,
-    cleaningFee: null,
-    serviceFee: null,
-    views: null,
-  });
-
+  // const payload = {
+  //   price: 149, rating: 4.5, numberOfReviews: 500, cleaningFee: 20, serviceFee: 10, views: 100,
+  // };
+  // const expectedAction = {
+  //   type: 'FETCH_PRICE',
+  //   payload,
+  // };
+  // const store = mockStore({
+  //   prices: null,
+  //   rating: null,
+  //   numberOfReviews: null,
+  //   cleaningFee: null,
+  //   serviceFee: null,
+  //   views: null,
+  // });
   // return store.dispatch(fetchPriceAction().then(() => {
   //   expect(store.getActions()).toEqual(expectedAction);
   // }));

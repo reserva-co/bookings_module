@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PriceAndRating = (props) => {
   const { price, rating, numberOfReviews } = props;
@@ -11,6 +12,8 @@ const PriceAndRating = (props) => {
     font-size: 22px;
     font-weight: 600;
   `;
+
+  PriceName.displayName = 'PriceName';
 
   const SmallText = styled.span`
     font-size: 12px;
@@ -83,6 +86,19 @@ const PriceAndRating = (props) => {
       <LineBreak />
     </div>
   );
+};
+
+PriceAndRating.propTypes = {
+  price: PropTypes.number,
+  rating: PropTypes.number,
+  numberOfReviews: PropTypes.number,
+};
+
+
+PriceAndRating.defaultProps = {
+  price: null,
+  rating: null,
+  numberOfReviews: null,
 };
 
 export default PriceAndRating;

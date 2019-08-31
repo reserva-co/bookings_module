@@ -54,6 +54,8 @@ const ReserveButton = styled.button`
   border-color: transparent;
 `;
 
+ReserveButton.displayName = 'ReserveButton';
+
 const SmallCenteredText = styled.div`
   font-size: 12px;
   font-weight: 500;
@@ -61,13 +63,15 @@ const SmallCenteredText = styled.div`
   text-align: center;
 `;
 
+SmallCenteredText.displayName = 'SmallCenteredText';
+
 const Body = styled.div`
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
   color: #484848;
 `;
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
     this.setWrapperRef = this.setWrapperRef.bind(this);
@@ -80,7 +84,7 @@ class App extends React.Component {
     document.addEventListener('mousedown', this.handleOutsideClick, false);
     document.addEventListener('mousedown', this.handleOutsideGuestClick, false);
     const { fetchPrice } = this.props;
-    fetchPrice();
+    fetchPrice(window.location.pathname.split('/')[2]);
   }
 
   setWrapperRef(node) {
@@ -128,7 +132,7 @@ class App extends React.Component {
               <ReserveButton><span><div>Reserve</div></span></ReserveButton>
             </div>
             <SmallCenteredText>
-              <span>You won’t be charged yet</span>
+              <span>You won&apos;t be charged yet</span>
             </SmallCenteredText>
           </ModuleContainerInner>
         </ModuleContainer>
@@ -138,8 +142,12 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  checkin: PropTypes.bool.isRequired,
+  checkout: PropTypes.bool.isRequired,
+  guestInfo: PropTypes.bool.isRequired,
   fetchPrice: PropTypes.func.isRequired,
   toggleCalendarsOff: PropTypes.func.isRequired,
+  toggleGuestInfoOff: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -149,7 +157,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchPrice: () => { dispatch(fetchPriceAction()); },
+  fetchPrice: (id) => { dispatch(fetchPriceAction(id)); },
   toggleCalendarsOff: () => { dispatch(popupCalendarActions.toggleCalendarsOff()); },
   toggleGuestInfoOff: () => { dispatch(toggleGuestInfo.toggleGuestInfoOff()); },
 });
