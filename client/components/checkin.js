@@ -71,10 +71,23 @@ const CheckIn = (props) => {
 CheckIn.propTypes = {
   checkout: PropTypes.bool.isRequired,
   checkin: PropTypes.bool.isRequired,
-  checkOutDate: PropTypes.func.isRequired,
-  checkInDate: PropTypes.func.isRequired,
+  checkOutDate: PropTypes.shape({
+    month: PropTypes.number,
+    day: PropTypes.string,
+    year: PropTypes.number,
+  }),
+  checkInDate: PropTypes.shape({
+    month: PropTypes.number,
+    day: PropTypes.string,
+    year: PropTypes.number,
+  }),
   toggleCheckInOn: PropTypes.func.isRequired,
   toggleCheckOutOn: PropTypes.func.isRequired,
+};
+
+CheckIn.defaultProps = {
+  checkOutDate: null,
+  checkInDate: null,
 };
 
 export default CheckIn;

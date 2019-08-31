@@ -9,7 +9,6 @@ import { App } from '../client/components/app';
 import Calendar from '../client/components/calendar';
 import CalendarOut from '../client/components/calendarOut';
 import Checkin from '../client/components/checkin';
-import Fees from '../client/components/fees';
 import Guests from '../client/components/guests';
 import GuestsInfo from '../client/components/guestsInfo';
 import PriceAndRating from '../client/components/priceAndRating';
@@ -71,16 +70,6 @@ function setupCheckin() {
   };
 }
 
-function setupFees() {
-  const props = {
-    price: 25,
-  };
-  const enzymeWrapper = shallow(<Fees {...props} />);
-  return {
-    props,
-    enzymeWrapper,
-  };
-}
 
 function setupGuests() {
   const props = {

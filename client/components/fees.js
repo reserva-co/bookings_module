@@ -83,11 +83,27 @@ $
 };
 
 Fees.propTypes = {
-  price: PropTypes.number.isRequired,
-  cleaningFee: PropTypes.number.isRequired,
-  serviceFee: PropTypes.number.isRequired,
-  checkInDate: PropTypes.objectOf.isRequired,
-  checkOutDate: PropTypes.objectOf.isRequired,
+  price: PropTypes.number,
+  cleaningFee: PropTypes.number,
+  serviceFee: PropTypes.number,
+  checkInDate: PropTypes.shape({
+    month: PropTypes.number,
+    day: PropTypes.string,
+    year: PropTypes.number,
+  }),
+  checkOutDate: PropTypes.shape({
+    month: PropTypes.number,
+    day: PropTypes.string,
+    year: PropTypes.number,
+  }),
+};
+
+Fees.defaultProps = {
+  price: null,
+  cleaningFee: null,
+  serviceFee: null,
+  checkInDate: null,
+  checkOutDate: null,
 };
 
 export default Fees;

@@ -84,7 +84,7 @@ export class App extends React.Component {
     document.addEventListener('mousedown', this.handleOutsideClick, false);
     document.addEventListener('mousedown', this.handleOutsideGuestClick, false);
     const { fetchPrice } = this.props;
-    fetchPrice();
+    fetchPrice(window.location.pathname.split('/')[2]);
   }
 
   setWrapperRef(node) {
@@ -132,7 +132,7 @@ export class App extends React.Component {
               <ReserveButton><span><div>Reserve</div></span></ReserveButton>
             </div>
             <SmallCenteredText>
-              <span>You won't be charged yet</span>
+              <span>You won&apos;t be charged yet</span>
             </SmallCenteredText>
           </ModuleContainerInner>
         </ModuleContainer>
@@ -144,7 +144,7 @@ export class App extends React.Component {
 App.propTypes = {
   checkin: PropTypes.bool.isRequired,
   checkout: PropTypes.bool.isRequired,
-  guestInfo: PropTypes.objectOf.isRequired,
+  guestInfo: PropTypes.bool.isRequired,
   fetchPrice: PropTypes.func.isRequired,
   toggleCalendarsOff: PropTypes.func.isRequired,
   toggleGuestInfoOff: PropTypes.func.isRequired,
@@ -157,7 +157,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchPrice: () => { dispatch(fetchPriceAction()); },
+  fetchPrice: (id) => { dispatch(fetchPriceAction(id)); },
   toggleCalendarsOff: () => { dispatch(popupCalendarActions.toggleCalendarsOff()); },
   toggleGuestInfoOff: () => { dispatch(toggleGuestInfo.toggleGuestInfoOff()); },
 });

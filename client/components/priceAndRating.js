@@ -89,10 +89,16 @@ const PriceAndRating = (props) => {
 };
 
 PriceAndRating.propTypes = {
-  price: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  numberOfReviews: PropTypes.number.isRequired,
+  price: PropTypes.number,
+  rating: PropTypes.number,
+  numberOfReviews: PropTypes.number,
 };
 
+
+PriceAndRating.defaultProps = {
+  price: null,
+  rating: null,
+  numberOfReviews: null,
+};
 
 export default PriceAndRating;

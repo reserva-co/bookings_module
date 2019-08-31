@@ -166,7 +166,7 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/reservations').then((res) => {
+    axios.get(`/api/reservations/${window.location.pathname.split('/')[2]}`).then((res) => {
       this.setState({
         month1: res.data.month1,
         month2: res.data.month2,
