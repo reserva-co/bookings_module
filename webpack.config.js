@@ -5,7 +5,8 @@ module.exports = {
   entry: "./client/index.js",
   output: {
     path: __dirname + "/public",
-    filename: "bundle.js"
+    filename: "bundle.js",
+    library: "ReservationsModule"
   },
   module: {
     rules: [

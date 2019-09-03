@@ -5,4 +5,10 @@ import { Provider } from 'react-redux';
 import ConnectedApp from './components/app';
 import store from './store/store';
 
-ReactDOM.render(<Provider store={store}><ConnectedApp /></Provider>, document.getElementById('root'));
+// ReactDOM.render(<Provider store={store}><ConnectedApp /></Provider>, document.getElementById('root'));
+
+const ReservationsModule = () => (
+  <Provider store={store}><ConnectedApp /></Provider>
+);
+
+export default { ReservationsModule, React, ReactDOM };

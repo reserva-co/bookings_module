@@ -177,7 +177,7 @@ class CalendarOut extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/reservations/${window.location.pathname.split('/')[2]}`).then((res) => {
+    axios.get(`http://localhost:3000/api/reservations/${window.location.pathname.split('/')[2]}`).then((res) => {
       this.setState({
         month1: res.data.month1.map((num) => num + 1),
         month2: res.data.month2.map((num) => num + 1),
