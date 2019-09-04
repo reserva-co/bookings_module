@@ -19,6 +19,11 @@
 
 > Some usage instructions
 
+npm install
+npm run build
+npm run seed
+go into server folder -> nodemon server.js
+
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).

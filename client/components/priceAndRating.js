@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-unused-expressions */
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const PriceAndRating = (props) => {

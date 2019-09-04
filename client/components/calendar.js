@@ -2,7 +2,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Popup = styled.div`
