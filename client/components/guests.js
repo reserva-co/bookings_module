@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-// import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Guests = (props) => {

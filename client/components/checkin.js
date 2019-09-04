@@ -2,7 +2,6 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-// import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 

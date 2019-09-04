@@ -3,7 +3,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import fetchPriceAction from '../actions/pricesAction';
 import toggleGuestInfo from '../actions/popupGuestsActions';
 import popupCalendarActions from '../actions/popupCalendarActions';
