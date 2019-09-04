@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const db = require('../database/database');
 
 const app = express();
-const port = 3000;
+const port = 3003;
 
 app.use(morgan('dev'));
 app.use(cors());
@@ -24,4 +24,4 @@ app.get('/api/reservations/prices/:id', (req, res) => {
 });
 
 
-app.listen(port, () => console.log('Listening on port 3000'));
+app.listen(port, () => console.log('Listening on port 3003'));
