@@ -1,8 +1,8 @@
-import axios from 'axios';
+import { get } from 'axios';
 
 export default function fetchReservations() {
   return (dispatch) => {
-    axios.get('/api/reservations')
+    get('/api/reservations')
       .then((reserved) => dispatch({
         type: 'FETCH_RESERVATIONS',
         payload: reserved,

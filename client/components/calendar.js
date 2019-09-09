@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-import axios from 'axios';
+import { get } from 'axios';
 import PropTypes from 'prop-types';
 
 const Popup = styled.div`
@@ -165,7 +165,7 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://54.153.79.78:3003/api/reservations/${window.location.pathname.split('/')[2]}`).then((res) => {
+    get(`http://54.153.79.78:3003/api/reservations/${window.location.pathname.split('/')[2]}`).then((res) => {
       this.setState({
         month1: res.data.month1,
         month2: res.data.month2,
