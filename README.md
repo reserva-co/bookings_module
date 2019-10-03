@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/reserva-co/location_module
+  - https://github.com/reserva-co/photo_module
+  - https://github.com/reserva-co/review_module
+  - https://github.com/reserva-co/bookings_proxy
 
 ## Table of Contents
 
@@ -19,10 +19,12 @@
 
 > Some usage instructions
 
+```sh
 npm install
 npm run build
 npm run seed
-go into server folder -> nodemon server.js
+nodemon server/server.js
+```
 
 ## Requirements
 
