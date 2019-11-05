@@ -27,7 +27,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "express": "^4.17.1",
     "fetch-mock": "^7.3.9",
-    "mongoose": "^5.6.10",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
     "prop-types": "^15.7.2",
